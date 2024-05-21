@@ -6,6 +6,7 @@ import { cartActions } from "@/redux/cartSlice";
 import Star from "@/components/UI/Star/Star";
 import ProductReviews from "./ProductReviews/ProductReviews";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
+import Image from "next/image";
 const myStyles = {
   itemShapes: RoundedStar,
   activeFillColor: "#ffb700",

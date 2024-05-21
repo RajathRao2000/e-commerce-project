@@ -1,6 +1,7 @@
 import React from "react";
 import missionimg from "../../images/mission.jpg";
 import story from "../../images/story1.jpg";
+import Image from "next/image";
 const About = ({ list }) => {
   return (
     <>
