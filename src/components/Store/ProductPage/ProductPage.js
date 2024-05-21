@@ -3,10 +3,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "@/redux/cartSlice";
-import { Rating } from "react-simple-star-rating";
 import Star from "@/components/UI/Star/Star";
 import ProductReviews from "./ProductReviews/ProductReviews";
-
+import { Rating, RoundedStar } from "@smastrom/react-rating";
+const myStyles = {
+  itemShapes: RoundedStar,
+  activeFillColor: "#ffb700",
+  inactiveFillColor: "#fbf1a9",
+};
 const reviewsArray = [
   {
     name: "jack",
@@ -130,6 +134,7 @@ const ProductPage = (props) => {
                 {images.map((url) => {
                   return (
                     <button
+                      key={Math.random()}
                       className={` w-24 h-24 rounded border-2 ${
                         url === mainImg
                           ? " border-blue-600"
@@ -148,7 +153,7 @@ const ProductPage = (props) => {
                 <h1 className="text-5xl">{title}</h1>
                 <p className="text-xs text-gray-500">{brand}</p>
                 <Rating
-                  style={{display:"flex"}}
+                  style={{ display: "flex" }}
                   initialValue={rating}
                   fillIcon={<Star color={true} />}
                   emptyIcon={<Star color={false} />}
@@ -163,7 +168,9 @@ const ProductPage = (props) => {
                 <p className="text-2xl">$ {price}</p>
                 <button
                   onClick={() => addtocart(1)}
-                  className={`ml-4 p-2 bg-[#0384c6] text-white rounded-md h-[40px] w-[100px] flex justify-center items-center ${loader?"opacity-50":""}`}
+                  className={`ml-4 p-2 bg-[#0384c6] text-white rounded-md h-[40px] w-[100px] flex justify-center items-center ${
+                    loader ? "opacity-50" : ""
+                  }`}
                   disabled={loader}
                 >
                   {loader ? (

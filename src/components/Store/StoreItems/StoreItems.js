@@ -204,7 +204,7 @@ const StoreItems = () => {
             } overflow-auto  rounded-md bg-white absolute shadow-lg results z-10 `}
           >
             {searchResults.map((item) => {
-              return <SearchItem {...item} />;
+              return <SearchItem key={item.id} {...item} />;
             })}
           </div>
         </div>

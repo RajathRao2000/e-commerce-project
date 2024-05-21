@@ -10,16 +10,16 @@ const Review = ({
 }) => {
   return (
     <div className="flex gap-3 flex-col border-b-2 py-3">
-      <div >
-      <p>
-        <Rating
-          className="m-0 p-0"
-          initialValue={rating}
-          fillIcon={<Star color={true} />}
-          emptyIcon={<Star color={false} />}
-        />
-      </p>
-      <p className="text-xl">{title}</p>
+      <div>
+        <p>
+          <Rating
+            className="m-0 p-0"
+            initialValue={rating}
+            fillIcon={<Star color={true} />}
+            emptyIcon={<Star color={false} />}
+          />
+        </p>
+        <p className="text-xl">{title}</p>
       </div>
       <p>{review}</p>
       <div className=" flex gap-4">
@@ -46,6 +46,7 @@ const ProductReviews = ({ reviewsArray }) => {
           }) => {
             return (
               <Review
+                key={Math.random()}
                 rating={rating}
                 title={title}
                 review={review}

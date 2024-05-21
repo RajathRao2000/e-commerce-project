@@ -7,7 +7,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-const category = () => {
+const Category = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const query = router.query.category;
@@ -45,4 +45,4 @@ const category = () => {
   );
 };
 
-export default category;
+export default Category;
