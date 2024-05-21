@@ -78,9 +78,9 @@ const About = ({ list }) => {
                 Get to know our team
               </p>
               <p className="text-lg sm:w-[600px]">
-                We're committed to building a diverse team and a work
-                environment that's inclusive of people of all backgrounds. Get
-                to know the wonderful team who's building our product and
+                We&apos;re committed to building a diverse team and a work
+                environment that&apos;s inclusive of people of all backgrounds. Get
+                to know the wonderful team who&apos;s building our product and
                 supporting our customers.
               </p>
             </div>
