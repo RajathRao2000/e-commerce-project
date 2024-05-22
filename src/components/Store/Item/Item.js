@@ -34,13 +34,16 @@ const Item = (props) => {
 
   return (
     <div
-      className={`item-container flex sm:flex-col bg-white  lg:min-w-[260px] lg:max-w-[300px] w-full  h-460px mb-16 gap-2`}
+      className={`item-container flex sm:flex-col bg-white  lg:min-w-[260px] lg:max-w-[300px] w-full  h-460px mb-16 gap-2 `}
     >
       <Link href={`/store/${category}/${id}`}>
-        <div
+        {/* <div
           style={{ backgroundImage: `url(${thumbnail})` }}
           className={`w-[300px] sm:w-full h-[320px] bg-cover bg-no-repeat bg-center rounded-lg`}
-        ></div>
+        ></div> */}
+        <div>
+          <img className="w-[300px] h-[320px] object-start object-cover" src={thumbnail}/>
+        </div>
       </Link>
       <div
         className="card-body w-[60%] sm:w-auto"

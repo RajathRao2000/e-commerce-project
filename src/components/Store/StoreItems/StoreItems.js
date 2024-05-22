@@ -6,12 +6,29 @@ import { useState } from "react";
 import Link from "next/link";
 let timeouttoken = "";
 
-import { Rating,RoundedStar  } from '@smastrom/react-rating'
+import { Rating, RoundedStar } from "@smastrom/react-rating";
 const myStyles = {
   itemShapes: RoundedStar,
-  activeFillColor: '#ffb700',
-  inactiveFillColor: '#fbf1a9'
-}
+  activeFillColor: "#ffb700",
+  inactiveFillColor: "#fbf1a9",
+};
+
+const searchicon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    stroke="currentColor"
+    className="w-6 h-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+    />
+  </svg>
+);
 
 const SearchItem = ({ thumbnail, title, rating, category, id, price }) => {
   return (
@@ -23,15 +40,15 @@ const SearchItem = ({ thumbnail, title, rating, category, id, price }) => {
         ></div>
         <div>
           <p>{title}</p>
-          
-        <div className="w-[100px]">
-          <Rating
-            value={rating}
-            itemStyles={myStyles} 
-            radius="small"
-            readOnly
-          />
-        </div>
+
+          <div className="w-[100px]">
+            <Rating
+              value={rating}
+              itemStyles={myStyles}
+              radius="small"
+              readOnly
+            />
+          </div>
           <p>$ {price}</p>
         </div>
       </div>
@@ -44,6 +61,7 @@ const StoreItems = () => {
   const [_productlist, _setProductList] = useState(productlist.products);
   const [pricerange, setPriceRange] = useState("");
   const [orderby, setOrderBy] = useState("--select--");
+  const searchInputAfter = `  `;
 
   function handlesorting(e) {
     setOrderBy(e.target.value);
@@ -155,10 +173,11 @@ const StoreItems = () => {
   return (
     <section className="store-bg flex flex-col w-full min-h-[calc(100vh-69.5px)] relative">
       <div className="filter border-b-[1px] border-black sm:h-[80px] w-full shadow flex flex-col sm:flex-row gap-7 sm:gap-2 sm:items-center p-6 sm:justify-around items-center">
-        <div className="search-bar shadow relative flex ">
+        <div className={`search-bar shadow relative ${searchInputAfter}`}>
           <input
             name="search"
-            className={`p-2 border-b-2 outline-none focus:border-b-black`}
+            // data-icon={searchicon}
+            className={`p-2 border-b-2 outline-none focus:border-b-black `}
             placeholder="Search"
             onChange={(e) => {
               if (timeouttoken) {
@@ -178,26 +197,8 @@ const StoreItems = () => {
               e.target.nextSibling.classList.add("border-black");
             }}
           />
-          <button className="p-2 border-b-2" type="submit" disabled>
-            {
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                />
-              </svg>
-            }
-          </button>
           <div
-            className={`search top-[42px] w-[400px] ${
+            className={`search left-[-10%] md:left-auto max-w-[400px] sm:w-[400px] ${
               searchResults.length !== 0
                 ? "h-auto max-h-[50vh] border-4 border-blue-500"
                 : "h-0"

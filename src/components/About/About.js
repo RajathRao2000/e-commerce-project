@@ -8,35 +8,31 @@ const About = ({ list }) => {
       <div className="about-body min-h-[calc(100vh-69.5px)] flex flex-col gap-5  justify-center items-center  ">
         <div className="about-header text-6xl my-12 ">About Us</div>
         <div className="max-w-6xl flex flex-col gap-14">
-          <div className="about-section1 grid grid-rows-2 grid-rows  sm:grid-cols-2 sm:grid-rows-1 m-7">
-            <div className="p-2 flex justify-center gap-4 flex-col  text-center sm:text-left">
-                <p className=" text-4xl font-semibold">Our Mission</p>
-              <div className="sm:max-w-[424px] text-xl ">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Debitis quo voluptatibus provident amet saepe, qui aspernatur.
-                  Suscipit quis nesciunt magni officiis veritatis, earum hic
-                  placeat, similique, totam animi a eius.
-                </p>
+          <div className="about-section1 justify-center flex flex-col-reverse items-center p-7 md:flex-row">
+            <div className="para p-5 flex flex-col gap-4 items-center sm:items-start">
+              <div className="title text-4xl font-semibold">Our Mission</div>
+              <div className="sub-text text-xl max-w-[400px]">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
+                quo voluptatibus provident amet saepe, qui aspernatur. Suscipit
+                quis nesciunt magni officiis veritatis, earum hic placeat,
+                similique, totam animi a eius.
               </div>
             </div>
-            <div className="row-start-1 sm:col-start-2 sm:pl-7">
-              <img
-                className="sm:w-[350px] sm:h-[350px]  object-cover sm:rounded-full "
-                src={`${missionimg.src}`}
+            <div className="image  ">
+              <Image
+                alt="Missiom Image"
+                width={500}
+                height={500}
+                className="w-full sm:max-w-[400px] sm:rounded-tr-[8rem] sm:rounded-bl-[8rem]"
+                src={missionimg.src}
               />
             </div>
           </div>
-          <div className="about-section2 sm:grid text-center sm:text-left sm:grid-cols-2 sm:grid-rows-1 ">
-            <div className="sm:p-7">
-              <img
-                className="object-cover  sm:max-h-[570px] sm:float-right"
-                src={`${story.src}`}
-              />
-            </div>
-            <div className="flex flex-col gap-4 sm:p-7 ">
-              <p className="text-4xl font-semibold">Our Story</p>
-              <div className="flex flex-col gap-3 text-lg sm:max-w-[412px] ">
+
+          <div className="about-section2 justify-center flex flex-col-reverse items-center p-7 md:flex-row-reverse md:items-start">
+            <div className="para p-5 flex flex-col gap-4 items-center sm:items-start">
+              <div className="title text-4xl font-semibold">Our Story</div>
+              <div className="sub-text text-xl max-w-[400px] flex flex-col gap-3">
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Debitis quo voluptatibus provident amet saepe, qui aspernatur.
@@ -72,6 +68,15 @@ const About = ({ list }) => {
                 </p>
               </div>
             </div>
+            <div className="image w-full max-w-[460px] pt-8">
+              <Image
+                alt="story image"
+                width={500}
+                height={500}
+                className="w-full"
+                src={story.src}
+              />
+            </div>
           </div>
           <div className="about-section3 bg-[#f9f9f9] ">
             <div className=" text-center flex flex-col items-center gap-4 m-5">
@@ -80,9 +85,9 @@ const About = ({ list }) => {
               </p>
               <p className="text-lg sm:w-[600px]">
                 We&apos;re committed to building a diverse team and a work
-                environment that&apos;s inclusive of people of all backgrounds. Get
-                to know the wonderful team who&apos;s building our product and
-                supporting our customers.
+                environment that&apos;s inclusive of people of all backgrounds.
+                Get to know the wonderful team who&apos;s building our product
+                and supporting our customers.
               </p>
             </div>
             <div className="about-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center overflow-auto h-[600px] ">
@@ -99,6 +104,9 @@ const About = ({ list }) => {
                     className="person w-full h-full flex flex-col  sm:m-4 sm:p-4"
                   >
                     <img
+                      width={300}
+                      height={300}
+                      alt={"employee image"}
                       className="rounded-xl md:max-w-[180px]  w-full"
                       src={large}
                     />

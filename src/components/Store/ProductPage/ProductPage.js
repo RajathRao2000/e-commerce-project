@@ -3,10 +3,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "@/redux/cartSlice";
-import Star from "@/components/UI/Star/Star";
 import ProductReviews from "./ProductReviews/ProductReviews";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
-import Image from "next/image";
 const myStyles = {
   itemShapes: RoundedStar,
   activeFillColor: "#ffb700",
@@ -123,43 +121,53 @@ const ProductPage = (props) => {
     <div className="product-page grid mt-7">
       {productDetails.id ? (
         <>
-          <div className="product-bg flex ">
-            <div className="product-image shadow flex flex-col w-[500px] gap-3">
-              <div className="main-img h-96 flex items-center justify-center w-[500px]">
-                <div
-                  style={{ backgroundImage: `url("${mainImg}")` }}
-                  className=" h-full w-full bg-contain bg-no-repeat bg-center"
-                ></div>
+          <div className="product-bg flex flex-col md:flex-row justify-center items-center ">
+            <div className="product-image grid border-2 gap-3 ">
+              <div className="main-img w-screen sm:w-[500px] h-[300px] shadow-md grid">
+                <img
+                  className="object-contain h-full w-full border-2"
+                  alt="main image"
+                  height={400}
+                  width={500}
+                  src={mainImg}
+                />
               </div>
-              <div className="images-thumbnail-container flex gap-3 p-2 border-[1px]  justify-around items-center overflow-auto">
+              <div className="images-thumbnail-container flex gap-2  min-w-[300px]  h-fit overflow-auto">
                 {images.map((url) => {
                   return (
                     <button
                       key={Math.random()}
-                      className={` w-24 h-24 rounded border-2 ${
+                      className={` w-[100px] h-[100px] border-2 ${
                         url === mainImg
                           ? " border-blue-600"
                           : "border-transparent"
                       }`}
                       onClick={() => setMainImg(url)}
                     >
-                      <img key={id + "image"} className={`   `} src={url} />
+                      <img
+                        alt="sub images"
+                        className="w-full h-full object-contain"
+                        key={id + "image"}
+                        src={url}
+                      />
                     </button>
                   );
                 })}
               </div>
             </div>
+
             <div className="product-details p-7 flex flex-col h-full gap-9">
               <div className="product-details-header flex flex-col gap-1">
                 <h1 className="text-5xl">{title}</h1>
                 <p className="text-xs text-gray-500">{brand}</p>
-                <Rating
-                  style={{ display: "flex" }}
-                  initialValue={rating}
-                  fillIcon={<Star color={true} />}
-                  emptyIcon={<Star color={false} />}
-                  readonly
-                />
+                <div className="w-[150px]">
+                  <Rating
+                    value={rating}
+                    itemStyles={myStyles}
+                    radius="small"
+                    readOnly
+                  />
+                </div>
               </div>
               <div className="product-description">
                 <p className="font-semibold">Description:</p>

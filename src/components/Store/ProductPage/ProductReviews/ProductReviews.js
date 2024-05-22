@@ -1,6 +1,12 @@
 import React from "react";
 import Star from "@/components/UI/Star/Star";
-import { Rating } from "react-simple-star-rating";
+
+import { Rating, RoundedStar } from "@smastrom/react-rating";
+const myStyles = {
+  itemShapes: RoundedStar,
+  activeFillColor: "#ffb700",
+  inactiveFillColor: "#fbf1a9",
+};
 const Review = ({
   rating = 5,
   title = "Some Title",
@@ -12,12 +18,14 @@ const Review = ({
     <div className="flex gap-3 flex-col border-b-2 py-3">
       <div>
         <p>
-          <Rating
-            className="m-0 p-0"
-            initialValue={rating}
-            fillIcon={<Star color={true} />}
-            emptyIcon={<Star color={false} />}
-          />
+        <div className="w-[100px]">
+            <Rating
+              value={rating}
+              itemStyles={myStyles}
+              radius="small"
+              readOnly
+            />
+          </div>
         </p>
         <p className="text-xl">{title}</p>
       </div>

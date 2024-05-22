@@ -48,18 +48,24 @@ const Footer = () => {
     { name: "Returns", url: "#" },
   ];
   return (
-    <div className="h-[300px] mt-8 border-t-[1px]  p-7 flex flex-col items-center bg-[#f9fafb] text-[#6b7280]">
-      <div className="footerlinks w-screen h-full  p-7 flex flex-col sm:flex-row gap-7 flex-wrap   justify-around">
-        <FooterLinks title="SHOP" arrayofLinks={popularCategories} />
-        <FooterLinks title="SOCIAL" arrayofLinks={social} />
-        <FooterLinks title="COMPANY" arrayofLinks={company} />
-        <FooterLinks title="SUPPORT" arrayofLinks={support} />
+    <div className="sm:h-[300px] mt-8 border-t-[1px] grid bg-[#f9fafb] text-[#6b7280]">
+      <div className="footerlinks sm:w-screen h-full p-7  gap-10 grid grid-cols-2 md:grid-cols-4">
+          <FooterLinks title="SHOP" arrayofLinks={popularCategories} />
+          <FooterLinks title="SOCIAL" arrayofLinks={social} />
+          <FooterLinks title="COMPANY" arrayofLinks={company} />
+          <FooterLinks title="SUPPORT" arrayofLinks={support} />
       </div>
-      <div className=" w-screen border-t-[1px] p-2 text-sm flex justify-center items-center flex-col">
+      <div className=" sm:w-screen border-t-[1px] p-2 text-sm flex justify-center items-center flex-col">
         <div className="links w-full flex items-center justify-center gap-5">
-          <Link className="hover:underline" href="#">Conditions of Use & Sale</Link>
-          <Link className="hover:underline" href="#">Privacy Notice</Link>
-          <Link className="hover:underline" href="#">Interest-Based Ads </Link>
+          <Link className="hover:underline" href="#">
+            Conditions of Use & Sale
+          </Link>
+          <Link className="hover:underline" href="#">
+            Privacy Notice
+          </Link>
+          <Link className="hover:underline" href="#">
+            Interest-Based Ads{" "}
+          </Link>
         </div>
         <p>© 1996-2024, shop.com, Inc. or its affiliates</p>
       </div>

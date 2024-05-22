@@ -5,6 +5,7 @@ const uiSlice = createSlice({
   initialState: {
     showCategory: false,
     showCart: false,
+    showMainMenu: false,
   },
   reducers: {
     setShowCategory(state, action) {

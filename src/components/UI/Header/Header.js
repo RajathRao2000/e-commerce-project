@@ -6,12 +6,17 @@ import CartList from "@/components/Cart/CartMain";
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "@/redux/uiSlice";
 import { authActions } from "@/redux/authSlice";
+import { useWindowSize } from "@/custom-hooks/useWindowSize";
+let timeoutid = "";
 //pathname+"" is used to convert pathname to string because when it is null .includes() cannot be used.
 const Header = () => {
+  const [windowsize, setWindowSize] = useState("");
+  const windowsizefunction = useWindowSize();
   const router = useRouter();
   const pathname = usePathname();
   const dispatch = useDispatch();
   const [userEmail, setUserEmail] = useState("");
+  const [showMenu, setShowMenu] = useState(true);
   const auth = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
   const active = "border-b-2 text-white";
@@ -28,14 +33,38 @@ const Header = () => {
     setUserEmail(auth.userData?.email);
   }, [auth.userData?.email]);
 
+  const MainMenuOnMouseHover = () => {
+    if (windowsize[0] < 768) {
+      if (timeoutid) {
+        clearTimeout(timeoutid);
+      }
+      setShowMenu(true);
+    }
+  };
+  const MainMenuOnMouseOut = () => {
+    if (windowsize[0] < 768) {
+      timeoutid = setTimeout(() => setShowMenu(false), 500);
+    }
+  };
+
+  useEffect(() => {
+    const arr = windowsizefunction;
+    setWindowSize(arr);
+    if (arr[0] > 768) {
+      setShowMenu(true);
+    } else {
+      setShowMenu(false);
+    }
+  }, [windowsizefunction]);
+
   return (
     <div className="relative">
       <CartList />
       <header
-        className={`p-4 flex items-center justify-center bg-gradient-to-r from-[#3f3f46] to-gray-900 text-gray-200 sticky w-full`}
+        className={`p-4 flex items-center justify-center bg-gradient-to-r from-[#3f3f46] to-gray-900 text-gray-200  w-full`}
       >
         <nav
-          className={`flex justify-between items-center gap-3 w-full max-w-6xl h-full`}
+          className={`flex justify-between items-center gap-3 w-full max-w-6xl h-full relative`}
         >
           <div className="header-logo relative">
             <button
@@ -78,8 +107,38 @@ const Header = () => {
                 </button>
               )}
           </div>
-
-          <div className="header-nav space-x-4">
+          <button
+            className="md:hidden"
+            onMouseOver={MainMenuOnMouseHover}
+            onMouseOut={MainMenuOnMouseOut}
+          >
+            <div className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+              Menu
+            </div>
+          </button>
+          <div
+            onMouseOver={MainMenuOnMouseHover}
+            onMouseOut={MainMenuOnMouseOut}
+            className={` header-nav z-50 space-x-4 absolute top-[50px] left-[-20px] flex place-content-center ${
+              showMenu
+                ? "h-[50px] p-3 overflow-auto"
+                : "h-0 text-[0] overflow-hidden "
+            }  transition-[height,padding]  duration-300 w-screen left-0 bg-gradient-to-r from-[#3f3f46] to-gray-900 md:bg-transparent md:from-transparent md:to-transparent md:static md:block md:h-auto md:w-auto md:text-inherit md:overflow-auto`}
+          >
             <Link
               className={`${pathname === "/" ? active : ""} ${hover}`}
               href="/"
