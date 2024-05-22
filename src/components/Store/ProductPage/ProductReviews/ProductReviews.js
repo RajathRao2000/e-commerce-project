@@ -17,16 +17,15 @@ const Review = ({
   return (
     <div className="flex gap-3 flex-col border-b-2 py-3">
       <div>
-        <p>
         <div className="w-[100px]">
-            <Rating
-              value={rating}
-              itemStyles={myStyles}
-              radius="small"
-              readOnly
-            />
-          </div>
-        </p>
+          <Rating
+            value={rating}
+            itemStyles={myStyles}
+            radius="small"
+            readOnly
+          />
+        </div>
+
         <p className="text-xl">{title}</p>
       </div>
       <p>{review}</p>

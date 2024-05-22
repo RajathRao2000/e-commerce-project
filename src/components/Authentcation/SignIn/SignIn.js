@@ -6,7 +6,7 @@ import InputContainer from "@/components/UI/Forms/InputContainer/InputContainer"
 import FormButton from "@/components/UI/Forms/FormButton/FormButton";
 import useSignIn from "@/custom-hooks/useSignIn";
 import Error from "@/components/UI/Forms/Error/Error";
-
+import axios from "axios";
 const SignIn = () => {
   const signInHandler = useSignIn();
   const [showPs, setShowPs] = useState(false);
@@ -16,15 +16,20 @@ const SignIn = () => {
     message: "",
   });
 
-  const validation = (e) => {
+  const validation = async (e) => {
     setEmailError({ error: false, message: "" });
     setPasswordError({ error: false, message: "" });
 
     e.preventDefault();
     const emailip = e.target["signin-email"];
     const passwordip = e.target["signin-ps"];
+    const rememberMeip = e.target["rememberMe"];
     const email = emailip.value;
     const password = passwordip.value;
+    const rememberMe = rememberMeip.checked;
+    emailip.disabled = true;
+    passwordip.disabled = true;
+    rememberMeip.disabled = true;
     if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
       setEmailError({ error: true, message: "Invalid Email" });
       return;
@@ -36,7 +41,20 @@ const SignIn = () => {
       });
       return;
     }
-    signInHandler(e);
+
+    try {
+      const res = await axios.post(`/api/signin`, {
+        email,
+        password,
+      });
+      const { message, data } = res.data;
+      signInHandler({ message, data, rememberMe });
+      emailip.disabled = true;
+      passwordip.disabled = true;
+      rememberMeip.disabled = true;
+    } catch (error) {
+      // console.log(error);
+    }
   };
 
   return (

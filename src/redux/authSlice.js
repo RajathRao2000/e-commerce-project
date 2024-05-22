@@ -19,6 +19,7 @@ const authSlice = createSlice({
   initialState: { userData: structure },
   reducers: {
     saveUserData(state, action) {
+      secureLocalStorage.removeItem("token")
       const { idToken, email, profilepic, username, rememberMe } =
         action.payload;
       state.userData = {
@@ -32,6 +33,7 @@ const authSlice = createSlice({
       // console.log(rememberMe);
       state.isAuth = true;
       if (rememberMe) {
+        console.log(rememberMe)
         secureLocalStorage.setItem("token", JSON.stringify(state.userData));
         // localStorage.setItem("token", JSON.stringify(state.userData));
       }
@@ -39,7 +41,7 @@ const authSlice = createSlice({
     logoutUser(state) {
       state.userData = "";
       state.isAuth = false;
-      localStorage.removeItem("token")
+      secureLocalStorage.removeItem("token")
     },
   },
 });

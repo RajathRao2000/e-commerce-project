@@ -122,10 +122,10 @@ const ProductPage = (props) => {
       {productDetails.id ? (
         <>
           <div className="product-bg flex flex-col md:flex-row justify-center items-center ">
-            <div className="product-image grid border-2 gap-3 ">
+            <div className="product-image grid  gap-3 ">
               <div className="main-img w-screen sm:w-[500px] h-[300px] shadow-md grid">
                 <img
-                  className="object-contain h-full w-full border-2"
+                  className="object-contain h-full w-full "
                   alt="main image"
                   height={400}
                   width={500}
