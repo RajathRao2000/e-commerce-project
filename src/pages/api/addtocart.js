@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 const uri =
-  `mongodb+srv://${process.env.mongodbuser}:${process.env.mongodbps}@cluster0.z25nbll.mongodb.net/?retryWrites=true&w=majority&appName=cluster0`;
+  `mongodb+srv://${process.env.NEXT_PUBLIC_mongodbuser}:${process.env.NEXT_PUBLIC_mongodbps}@cluster0.z25nbll.mongodb.net/?retryWrites=true&w=majority&appName=cluster0`;
 
 export default async function handler(req, res) {
   const client = new MongoClient(uri);

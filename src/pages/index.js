@@ -11,6 +11,7 @@ import shoes from "../images/shoes.jpg";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
+import('next').NextConfig
 
 const CategoryCard = ({ title, url, imageurl }) => {
   return (

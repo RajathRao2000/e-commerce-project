@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
-const APIKEY = process.env.GOOGLE_API_KEY;
+const APIKEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 const SIGNUP_URL = `${keys.SignUpUrl}${APIKEY}`;
 
 //todo: implement forgot password
