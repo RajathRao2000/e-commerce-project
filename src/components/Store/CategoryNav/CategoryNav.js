@@ -18,7 +18,7 @@ const CategoryNav = () => {
   };
 
   async function getCategories() {
-    const res = await axios.get("https://dummyjson.com/products/categories");
+    const res = await axios.get("https://dummyjson.com/products/category-list");
     setCategories(["all", ...res.data]);
   }
 
@@ -68,6 +68,7 @@ const CategoryNav = () => {
           </button>
         </div>
         {categories.map((category) => {
+          console.log(category)
           let temp = category.split("");
           temp[0] = temp[0].toUpperCase();
           let capitalize = temp.join("");
