@@ -137,7 +137,7 @@ const Header = () => {
               showMenu
                 ? "h-[50px] p-3 overflow-auto"
                 : "h-0 text-[0] overflow-hidden "
-            }  transition-[height,padding]  duration-300 w-screen left-0 bg-gradient-to-r from-[#3f3f46] to-gray-900 md:bg-transparent md:from-transparent md:to-transparent md:static md:block md:h-auto md:w-auto md:text-inherit md:overflow-auto`}
+            }  transition-[height,padding]  duration-300 w-screen left-0 bg-gradient-to-r from-[#3f3f46] to-gray-900 md:bg-transparent md:from-transparent md:to-transparent md:static md:block md:h-auto md:w-auto md:text-inherit md:overflow-auto md:p-0`}
           >
             <Link
               className={`${pathname === "/" ? active : ""} ${hover}`}
