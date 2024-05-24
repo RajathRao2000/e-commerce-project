@@ -188,10 +188,13 @@ const StoreItems = () => {
                 searchQuery(e.target.value);
               }, 500);
             }}
+            
             onBlur={(e) => {
-              e.target.value = "";
-              e.target.nextSibling.classList.remove("border-black");
-              setSearchResults([]);
+              setTimeout(() => {
+                e.target.value = "";
+                e.target.nextSibling.classList.remove("border-black");
+                setSearchResults([]);
+              }, 300);
             }}
             onFocus={(e) => {
               e.target.nextSibling.classList.add("border-black");

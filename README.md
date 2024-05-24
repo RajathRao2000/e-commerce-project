@@ -42,7 +42,7 @@
 <!-- [![E-Commerce Screen Shot][product-screenshot]](".\readme-assets\homepage.png") -->
 <img src=".\readme-assets\homepage.png">
 
-This project was made to showcase my skills with React. I used next Js for building this react application as has backend support to call databases. Every page in the project was made responsive for mobile and PC device.
+This project was made to showcase my skills with React. I used next Js for building this react application as it has backend support to call databases. Every page in the project was made responsive for mobile and PC device.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
