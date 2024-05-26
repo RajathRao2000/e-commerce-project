@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import Head from "next/head";
 
 const Category = () => {
   const router = useRouter();
@@ -14,6 +15,7 @@ const Category = () => {
   const [itemList, setItemList] = useState([]);
 
   async function getData() {
+    dispatch(productAction.updateProductList([]))
     let url = "";
     if (query !== undefined) {
       if (query === "all") {
@@ -38,10 +40,16 @@ const Category = () => {
   }, [query]);
 
   return (
-    <div className="flex w-screen max-w-6xl">
-      <CategoryNav />
-      <StoreItems items={itemList} />
-    </div>
+    <>
+      <Head>
+        <title>Store: {query}</title>
+        <meta property="description" content={`This page lists all the products related to ${query}`} />
+      </Head>
+      <div className="flex w-screen max-w-6xl">
+        <CategoryNav />
+        <StoreItems items={itemList} />
+      </div>
+    </>
   );
 };
 

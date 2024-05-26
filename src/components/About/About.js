@@ -1,6 +1,6 @@
 import React from "react";
 import missionimg from "../../images/mission.jpg";
-import story from "../../images/story1.jpg";
+import story from "../../images/story.jpg";
 import Image from "next/image";
 const About = ({ list }) => {
   return (
@@ -12,10 +12,11 @@ const About = ({ list }) => {
             <div className="para p-5 flex flex-col gap-4 items-center sm:items-start">
               <div className="title text-4xl font-semibold">Our Mission</div>
               <div className="sub-text text-xl max-w-[400px]">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-                quo voluptatibus provident amet saepe, qui aspernatur. Suscipit
-                quis nesciunt magni officiis veritatis, earum hic placeat,
-                similique, totam animi a eius.
+                We revolutionize the online shopping experience by providing our
+                customers with a diverse selection of high-quality products at
+                unbeatable prices. At the heart of our mission is a passion for
+                connecting people with the products they love, making every
+                shopping moment delightful and fulfilling.
               </div>
             </div>
             <div className="image  ">
@@ -29,51 +30,40 @@ const About = ({ list }) => {
             </div>
           </div>
 
-          <div className="about-section2 justify-center flex flex-col-reverse items-center p-7 md:flex-row-reverse md:items-start">
+          <div className="about-section2  flex flex-col-reverse  p-7 md:flex-row-reverse md:items-start">
             <div className="para p-5 flex flex-col gap-4 items-center sm:items-start">
               <div className="title text-4xl font-semibold">Our Story</div>
               <div className="sub-text text-xl max-w-[400px] flex flex-col gap-3">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Debitis quo voluptatibus provident amet saepe, qui aspernatur.
-                  Suscipit quis nesciunt magni officiis veritatis, earum hic
-                  placeat, similique, totam animi a eius.
+                  We began with a simple idea: to create an online marketplace
+                  that offers an unparalleled shopping experience. Founded in
+                  2000, our journey started in a small garage, fueled by a
+                  passion for innovation and a vision to transform the way
+                  people shop.
                 </p>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Mollitia, iure ea? Assumenda ducimus iste officiis eum ipsa
-                  neque quisquam inventore unde odio, dicta doloremque ratione,
-                  deserunt odit ex tempora porro. Ipsa corporis tenetur
-                  aspernatur sit libero distinctio ducimus, ex recusandae
-                  laborum, voluptate nulla ad. Enim iure maxime maiores ut
-                  obcaecati ad delectus, tempore adipisci ab non consequatur
-                  odit deserunt suscipit?
+                  From those humble beginnings, we have grown into a trusted
+                  ecommerce platform, serving millions of customers worldwide.
+                  Our story is one of relentless dedication, overcoming
+                  challenges, and constantly evolving to meet the needs of our
+                  customers.
                 </p>
                 <p>
-                  Animi pariatur quibusdam voluptate saepe eaque cupiditate.
-                  Quam suscipit impedit porro obcaecati fugiat cumque iste
-                  reprehenderit, amet magnam assumenda neque officiis distinctio
-                  praesentium at esse veritatis non quia pariatur eius? Vel
-                  voluptates magnam facilis sint assumenda voluptatibus, tempora
-                  consequatur cum quibusdam saepe sequi praesentium unde
-                  pariatur ratione ex voluptatem officiis fugit placeat nemo
-                  earum.
-                </p>
-                <p>
-                  Temporibus, labore. Eius nesciunt minus tempora? Voluptates
-                  necessitatibus molestias veritatis magni hic dolore aspernatur
-                  esse autem, odit nulla. Delectus dicta soluta blanditiis ipsam
-                  eius quibusdam odit voluptatem, quod laudantium aliquam,
-                  cupiditate minima, nulla nisi quis ipsum?
+                  We take pride in our curated selection of products, our
+                  commitment to quality, and our unwavering focus on customer
+                  satisfaction. As we continue to grow, our founding principles
+                  remain the same: to provide exceptional value, foster a
+                  community of happy shoppers, and make a positive impact on the
+                  world through our business.
                 </p>
               </div>
             </div>
-            <div className="image w-full max-w-[460px] pt-8">
+            <div className="image w-full h-full  border-2 max-w-[460px] pt-8 flex items-center justify-center">
               <Image
                 alt="story image"
                 width={500}
                 height={500}
-                className="w-full"
+                className="w-full md:max-w-[350px]"
                 src={story.src}
               />
             </div>

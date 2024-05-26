@@ -26,7 +26,7 @@ const CartList = () => {
       >
         <div
           className={` bg-white h-full flex flex-col ${
-            showCart ? "w-[450px]" : "w-0"
+            showCart ? "w-screen sm:w-[450px]" : "w-0"
           } duration-200 transition-[width] ease-in-out fixed right-0`}
         >
           <CartHeader />

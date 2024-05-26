@@ -1,5 +1,4 @@
 import React from "react";
-import Star from "@/components/UI/Star/Star";
 
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 const myStyles = {
@@ -12,7 +11,7 @@ const Review = ({
   title = "Some Title",
   review = "some Description",
   name = "Name lname",
-  date = new Date().toString(),
+  date = new Date(),
 }) => {
   return (
     <div className="flex gap-3 flex-col border-b-2 py-3">
@@ -32,7 +31,7 @@ const Review = ({
       <div className=" flex gap-4">
         <p>{name}</p>
         <p className="border-r-[1px] border-gray-400"></p>
-        <p>{date}</p>
+        <p>{new Date(date).toDateString()}</p>
       </div>
     </div>
   );
@@ -46,18 +45,19 @@ const ProductReviews = ({ reviewsArray }) => {
         {reviewsArray?.map(
           ({
             rating = 5,
-            title = "Some Title",
-            review = "some Description",
-            name = "Name lname",
-            date = new Date().toString(),
+            comment = "Some Title",
+            review = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate mollitia quos officia earum ut rem sed libero sunt eligendi neque ullam asperiores aliquid, atque veritatis magni ipsum modi consequuntur possimus.",
+            reviewerName = "Name lname",
+            date = new Date(),
+            email = "a@a.com",
           }) => {
             return (
               <Review
                 key={Math.random()}
                 rating={rating}
-                title={title}
+                title={comment}
                 review={review}
-                name={name}
+                name={reviewerName}
                 date={date}
               />
             );

@@ -13,7 +13,7 @@ const CartFooter = () => {
             Shipping will be calculated at checkout
           </p>
         </div>
-        <p>$ {cart.total_price}</p>
+        <p>$ {cart.total_price.toFixed(2)}</p>
       </div>
       <div className=" w-full h-full flex justify-center items-center">
         <button className=" w-full h-[50px] bg-[#0384c6] rounded-md text-white">

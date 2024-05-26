@@ -1,67 +1,32 @@
 import React, { useEffect } from "react";
 import Item from "../Item/Item";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import { useState } from "react";
+
+import Search from "./Search/Search";
+import { useRouter } from "next/router";
 import Link from "next/link";
-let timeouttoken = "";
-
-import { Rating, RoundedStar } from "@smastrom/react-rating";
-const myStyles = {
-  itemShapes: RoundedStar,
-  activeFillColor: "#ffb700",
-  inactiveFillColor: "#fbf1a9",
-};
-
-const searchicon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={1.5}
-    stroke="currentColor"
-    className="w-6 h-6"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-    />
-  </svg>
-);
-
-const SearchItem = ({ thumbnail, title, rating, category, id, price }) => {
-  return (
-    <Link href={`/store/${category}/${id}`}>
-      <div className="item-bg flex gap-3 p-2 border-b-[1px]">
-        <div
-          style={{ backgroundImage: `url(${thumbnail})` }}
-          className="w-[80px] h-[100px] bg-cover bg-center bg-no-repeat rounded"
-        ></div>
-        <div>
-          <p>{title}</p>
-
-          <div className="w-[100px]">
-            <Rating
-              value={rating}
-              itemStyles={myStyles}
-              radius="small"
-              readOnly
-            />
-          </div>
-          <p>$ {price}</p>
-        </div>
-      </div>
-    </Link>
-  );
-};
 
 const StoreItems = () => {
+  const router = useRouter();
+  const [query, setQuery] = useState();
   const productlist = useSelector((state) => state.product.products);
   const [_productlist, _setProductList] = useState(productlist.products);
-  const [pricerange, setPriceRange] = useState("");
+  const [pricerange, setPriceRange] = useState("all");
   const [orderby, setOrderBy] = useState("--select--");
-  const searchInputAfter = `  `;
+  const [pagetitle, setPageTitle] = useState("");
+
+  useEffect(() => {
+    setQuery(router.query.category);
+  }, [router]);
+
+  useEffect(() => {
+    if (query) {
+      let arr = query.split("");
+      let title = arr[0].toUpperCase() + arr.join("").substring(1);
+      setPageTitle(title);
+    }
+  }, [query]);
 
   function handlesorting(e) {
     setOrderBy(e.target.value);
@@ -71,7 +36,9 @@ const StoreItems = () => {
   }
 
   useEffect(() => {
-    _setProductList(productlist.products);
+    _setProductList(productlist.products || []);
+    setPriceRange("all");
+    setOrderBy("--select--");
   }, [productlist]);
 
   useEffect(() => {
@@ -157,61 +124,10 @@ const StoreItems = () => {
     _setProductList(arr);
   }, [pricerange, orderby]);
 
-  const [searchResults, setSearchResults] = useState([]);
-
-  const searchQuery = async (usrinput) => {
-    if (!usrinput) {
-      setSearchResults([]);
-      return;
-    }
-    const res = await axios.get(
-      `https://dummyjson.com/products/search?q=${usrinput}`
-    );
-    setSearchResults(res.data.products);
-  };
-
   return (
     <section className="store-bg flex flex-col w-full min-h-[calc(100vh-69.5px)] relative">
       <div className="filter border-b-[1px] border-black sm:h-[80px] w-full shadow flex flex-col sm:flex-row gap-7 sm:gap-2 sm:items-center p-6 sm:justify-around items-center">
-        <div className={`search-bar shadow relative ${searchInputAfter}`}>
-          <input
-            name="search"
-            // data-icon={searchicon}
-            className={`p-2 border-b-2 outline-none focus:border-b-black `}
-            placeholder="Search"
-            onChange={(e) => {
-              if (timeouttoken) {
-                // console.log("clear timeout", timeouttoken);
-                clearTimeout(timeouttoken);
-              }
-              timeouttoken = setTimeout(() => {
-                searchQuery(e.target.value);
-              }, 500);
-            }}
-            
-            onBlur={(e) => {
-              setTimeout(() => {
-                e.target.value = "";
-                e.target.nextSibling.classList.remove("border-black");
-                setSearchResults([]);
-              }, 300);
-            }}
-            onFocus={(e) => {
-              e.target.nextSibling.classList.add("border-black");
-            }}
-          />
-          <div
-            className={`search left-[-10%] md:left-auto max-w-[400px] sm:w-[400px] ${
-              searchResults.length !== 0
-                ? "h-auto max-h-[50vh] border-4 border-blue-500"
-                : "h-0"
-            } overflow-auto  rounded-md bg-white absolute shadow-lg results z-10 `}
-          >
-            {searchResults.map((item) => {
-              return <SearchItem key={item.id} {...item} />;
-            })}
-          </div>
-        </div>
+        <Search />
         <div className="filter-store gap-5 flex flex-col sm:flex-row">
           <div className="price-range relative">
             <p className="absolute top-[-20px] text-sm">Select Price Range</p>
@@ -244,15 +160,53 @@ const StoreItems = () => {
           </div>
         </div>
       </div>
-      <div className="store-items-container w-full max-w-6xl grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3  overflow-auto p-3">
-        {_productlist.length !== 0
-          ? _productlist.map((item) => {
-              return <Item key={item.id} {...item} />;
-            })
-          : !pricerange
-          ? "Loading..."
-          : "No Products belonging in this price range"}
+      <div className="header border-b-2">
+        <div className=" p-4 text-2xl font-semibold  sm:text-3xl sm:p-5 md:text-5xl md:text-left md:p-6">
+          {pagetitle}
+        </div>
+        <div className="breadcrumbs p-2 ">
+          <Link className="text-blue-600 hover:text-blue-100" href={"/store"}>
+            Categories
+          </Link>{" "}
+          / <Link href={"#"}> {query}</Link>
+        </div>
       </div>
+      {_productlist.length !== 0 ? (
+        <div className="store-items-container w-full max-w-6xl grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3  overflow-auto p-3">
+          {_productlist.map((item) => {
+            return <Item key={item.id} {...item} />;
+          })}
+        </div>
+      ) : !(pricerange !== "all" || orderby !== "--select--") ? (
+        <p className=" h-full flex justify-center items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="5em"
+            height="5em"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="black"
+              d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20Z"
+              opacity={0.5}
+            ></path>
+            <path fill="white" d="M20 12h2A10 10 0 0 0 12 2V4A8 8 0 0 1 20 12Z">
+              <animateTransform
+                attributeName="transform"
+                dur="1s"
+                from="0 12 12"
+                repeatCount="indefinite"
+                to="360 12 12"
+                type="rotate"
+              ></animateTransform>
+            </path>
+          </svg>
+        </p>
+      ) : (
+        <p className="h-full flex justify-center items-center">
+          There are no items matching this filter !
+        </p>
+      )}
     </section>
   );
 };

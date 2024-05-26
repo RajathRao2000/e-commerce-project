@@ -11,8 +11,8 @@ import shoes from "../images/shoes.jpg";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
-import('next').NextConfig
-
+import("next").NextConfig;
+import Head from "next/head";
 const CategoryCard = ({ title, url, imageurl }) => {
   return (
     <Link href={`/store/${url}`} className=" hover:opacity-75">
@@ -35,6 +35,10 @@ export default function Home() {
     "before:absolute before:w-screen before:h-full before:bg-black/70 h-[50vh]";
   return (
     <>
+      <Head>
+        <title>Home</title>
+        <meta property="description" content="Welcome to homepage" />
+      </Head>
       <div className="grid min-h-screen place-items-center">
         <div className="hero-container relative h-[50vh] min-h-[660px] ">
           <div
@@ -83,7 +87,7 @@ export default function Home() {
                 Explore Exclusive Styles for Every Occasion!
               </div>
               <div className="button w-full mt-5">
-                <button className="p-2 border-[1px] border-white hover:border-black hover:bg-white hover:text-black transition-colors duration-200 sm:border-black sm:hover:bg-black sm:hover:text-white">
+                <button onClick={()=>router.replace("/store/womens-dresses")} className="p-2 border-[1px] border-white hover:border-black hover:bg-white hover:text-black transition-colors duration-200 sm:border-black sm:hover:bg-black sm:hover:text-white">
                   Explore now
                 </button>
               </div>
@@ -100,14 +104,12 @@ export default function Home() {
           </div>
           <div className="section2 min-h-[500px] relative p-5 flex flex-col-reverse sm:flex-row-reverse  sm:items-center md:p-20">
             <div className="para flex flex-col justify-center p-7 absolute text-white top-0 z-50 h-full sm:static sm:text-black   ">
-              <div className="title text-5xl font-bold">
-              Refine Your Look
-              </div>
+              <div className="title text-5xl font-bold">Refine Your Look</div>
               <div className="sub-text text-xl">
-              Discover Premium Menswear for Every Adventure!
+                Discover Premium Menswear for Every Adventure!
               </div>
               <div className="button w-full mt-5">
-                <button className="p-2 border-[1px] border-white hover:border-black hover:bg-white hover:text-black transition-colors duration-200 sm:border-black sm:hover:bg-black sm:hover:text-white">
+                <button onClick={()=>router.replace("/store/mens-shirts")} className="p-2 border-[1px] border-white hover:border-black hover:bg-white hover:text-black transition-colors duration-200 sm:border-black sm:hover:bg-black sm:hover:text-white">
                   Explore now
                 </button>
               </div>

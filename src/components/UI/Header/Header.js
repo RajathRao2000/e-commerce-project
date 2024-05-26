@@ -83,8 +83,8 @@ const Header = () => {
                 />
               </svg>
             </button>
-            {(pathname + "").includes("/store") &&
-              (pathname || "").split("/").length <= 3 && (
+            {
+              (router.pathname || "")==="/store/[category]" && (
                 <button
                   className="category-menu flex gap-1 absolute top-2 left-12 items-center"
                   onClick={() => dispatch(uiActions.setShowCategory(true))}
@@ -149,7 +149,7 @@ const Header = () => {
               className={`${
                 (pathname + "").includes("/store") ? active : ""
               } ${hover}`}
-              href="/store/all"
+              href="/store"
             >
               Store
             </Link>
