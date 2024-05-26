@@ -21,6 +21,7 @@ const searchicon = (
 const Search = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [search, setSearch] = useState("");
+  const [focus, setFocus] = useState(false);
 
   const searchQuery = async (usrinput) => {
     if (!usrinput) {
@@ -51,16 +52,23 @@ const Search = () => {
     <div className={`search-bar shadow relative `}>
       <input
         name="search"
-        className={`p-2 border-b-2 outline-none focus:border-b-black `}
-        placeholder="Search"
+        id="search"
+        className={`p-2 border-2 outline-none border-black focus:border-blue-500  w-full`}
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);
         }}
-        onFocus={(e) => {
-          e.target.nextSibling.classList.add("border-black");
-        }}
+        onFocus={()=>setFocus(true)}
+        onBlur={()=>setFocus(false)}
       />
+      <label
+        htmlFor="search"
+        className={`absolute transition-[font-size,top,left,color]  ${
+          focus ? ` left-[10px] top-[-13px] bg-white text-blue-500 ` : `top-[15%] left-[10px] text-lg text-gray-400`
+        }`}
+      >
+        Search Product
+      </label>
       <div
         className={`search left-[-10%] md:left-auto max-w-[400px] sm:w-[400px] ${
           searchResults.length !== 0

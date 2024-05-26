@@ -15,7 +15,7 @@ import("next").NextConfig;
 import Head from "next/head";
 const CategoryCard = ({ title, url, imageurl }) => {
   return (
-    <Link href={`/store/${url}`} className=" hover:opacity-75">
+    <Link href={`/store/${url}`} className=" hover:opacity-75 ">
       <div className=" p-2 relative">
         <img
           className="w-[300px] h-[300px] object-center rounded-xl object-cover"
@@ -92,7 +92,7 @@ export default function Home() {
                 </button>
               </div>
             </div>
-            <div className="image brightness-[0.3] sm:brightness-100 bg-contain">
+            <div className="image brightness-50 sm:brightness-100 bg-contain">
               <Image
                 alt="women with a Shopping Bag"
                 width={500}
@@ -114,7 +114,7 @@ export default function Home() {
                 </button>
               </div>
             </div>
-            <div className="image brightness-[0.3] sm:brightness-100 bg-contain">
+            <div className="image brightness-50 sm:brightness-100 bg-contain">
               <Image
                 alt="some shirts"
                 width={500}
@@ -124,9 +124,9 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="section3 flex flex-col items-center w-full">
-            <h2 className=" p-2 text-3xl underline">Shop by Category</h2>
-            <div className="home-category-container border-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full place-items-center">
+          <div className="section3 w-full grid place-items-center">
+            <h2 className=" p-2 text-3xl my-10 underline text-center">Our Top Categories</h2>
+            <div className="home-category-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full place-items-center gap-5 p-7 max-w-[1050px]">
               <CategoryCard
                 title="Smartphones"
                 imageurl={smartphone.src}

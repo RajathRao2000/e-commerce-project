@@ -6,11 +6,13 @@ import makeup from "../../images/makeup-banner.jpg";
 import fragrance from "../../images/fragrances-banner.jpg";
 import furniture from "../../images/furniture-banner.jpg";
 import Image from "next/image";
+import Search from "@/components/Store/StoreItems/Search/Search";
 const CategoryBanner = ({ category, product_list }) => {
   let _category = "";
   let bannertitle = "";
   let background = "";
   let image = "";
+  let linkbg=""
   switch (category) {
     case "beauty":
       _category = "Beauty";
@@ -18,6 +20,7 @@ const CategoryBanner = ({ category, product_list }) => {
       background =
         "sm:bg-gradient-to-b from-[#d7c2c4] via-[#ddcdce] to-[#e3d1d2]";
       image = makeup.src;
+      linkbg="bg-[#c9c7c5]"
       break;
     case "fragrances":
       _category = "Fragrances";
@@ -35,13 +38,13 @@ const CategoryBanner = ({ category, product_list }) => {
       break;
   }
   return (
-    <div className={`category-banner p-5 `}>
+    <div className={`category-banner p-5`}>
       <div
-        className={`relative grid sm:grid-cols-3 md:p-7 gap-4 sm:h-[250px] md:h-[400px] sm:p-0  ${background}  `}
+        className={`relative grid sm:grid-cols-3 md:p-7 gap-4 sm:h-[250px] md:h-[400px] sm:p-0  ${background}  rounded-2xl `}
       >
         <div className="absolute hidden sm:block h-full">
           <Image
-            className="h-full w-fit object-contain "
+            className="h-full w-fit object-contain rounded-l-2xl"
             width={400}
             height={500}
             src={image}
@@ -54,7 +57,7 @@ const CategoryBanner = ({ category, product_list }) => {
           <div className="z-[2] p-5 flex flex-col  sm:h-full sm:rounded-none md:my-8 md:justify-center md:rounded-lg sm:text-black sm:bg-white  sm:font-extrabold sm:gap-5  sm:w-[217px]  ">
             <p className="text-3xl sm:text-4xl ">{bannertitle}</p>
             <Link
-              className="sm:border-4 text-blue-600 hover:text-blue-300 sm:border-black sm:bg-white sm:text-black sm:w-fit sm:p-2 sm:hover:text-white sm:hover:bg-black "
+              className="sm:border-4 text-blue-600 hover:text-blue-300 sm:border-black sm:text-black sm:w-fit sm:p-2 sm:hover:text-white sm:hover:bg-black "
               href={`/store/${category}`}
             >
               View more
@@ -111,6 +114,11 @@ const ProductList = ({ categoriesArr, productsObj }) => {
       </Head>
       <div className="flex flex-col min-h-screen w-screen max-w-6xl ">
         <h1 className="text-5xl m-10 text-center">Categories</h1>
+        <div className=" flex justify-center">
+          <div className=" w-[300px]">
+            <Search />
+          </div>
+        </div>
         <div className="category-banner-bg  w-full">
           {Object.keys(obj).map((category) => {
             let temp = obj[category];
@@ -123,14 +131,14 @@ const ProductList = ({ categoriesArr, productsObj }) => {
             );
           })}
         </div>
-        <div className="grid place-items-center gap-10">
-          <h1 className="text-2xl">Browse Other Categories:</h1>
+        <div className="grid place-items-center ">
+          <h1 className="text-2xl my-10">Browse Other Categories:</h1>
           <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
             {categoriesArr.map((value) => {
               return (
                 <Link
                   key={Math.random()}
-                  className="text-center rounded-md p-3 shadow-md hover:shadow-xl hover:scale-105 text-white bg-[#3f3f46] duration-200 transition-[transform,shadow,color,background]"
+                  className="text-center rounded-md p-3 border-2 border-black font-bold hover:scale-110 duration-75 transition-[transform,color,background] hover:bg-black hover:text-white"
                   href={`/store/${value.slug}`}
                 >
                   {value.name}

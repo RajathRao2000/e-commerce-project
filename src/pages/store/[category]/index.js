@@ -42,7 +42,7 @@ const Category = () => {
   return (
     <>
       <Head>
-        <title>Store: {query}</title>
+        <title>Store: {typeof query==="string"?query:""}</title>
         <meta property="description" content={`This page lists all the products related to ${query}`} />
       </Head>
       <div className="flex w-screen max-w-6xl">

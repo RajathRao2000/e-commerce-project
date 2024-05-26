@@ -8,32 +8,44 @@ const About = ({ list }) => {
       <div className="about-body min-h-[calc(100vh-69.5px)] flex flex-col gap-5  justify-center items-center  ">
         <div className="about-header text-6xl my-12 ">About Us</div>
         <div className="max-w-6xl flex flex-col gap-14">
-          <div className="about-section1 justify-center flex flex-col-reverse items-center p-7 md:flex-row">
-            <div className="para p-5 flex flex-col gap-4 items-center sm:items-start">
-              <div className="title text-4xl font-semibold">Our Mission</div>
-              <div className="sub-text text-xl max-w-[400px]">
-                We revolutionize the online shopping experience by providing our
+          <div className=" about-section1 grid place-items-center ">
+            <div className=" title text-4xl font-semibold p-2 text-center w-full md:my-10">
+              Our Mission
+            </div>
+            <div className="md:grid md:grid-cols-2">
+              <div className=" image w-full max-w-[400px] p-4 ">
+                <Image
+                  alt="Missiom Image"
+                  width={500}
+                  height={500}
+                  className="w-full"
+                  src={missionimg.src}
+                />
+              </div>
+              <div className="sub-text text-2xl max-w-[400px] flex flex-col justify-center gap-4 p-4">
+              <p>We revolutionize the online shopping experience by providing our
                 customers with a diverse selection of high-quality products at
                 unbeatable prices. At the heart of our mission is a passion for
                 connecting people with the products they love, making every
-                shopping moment delightful and fulfilling.
+                shopping moment delightful and fulfilling.</p>
               </div>
             </div>
-            <div className="image  ">
-              <Image
-                alt="Missiom Image"
-                width={500}
-                height={500}
-                className="w-full sm:max-w-[400px] sm:rounded-tr-[8rem] sm:rounded-bl-[8rem]"
-                src={missionimg.src}
-              />
-            </div>
           </div>
-
-          <div className="about-section2  flex flex-col-reverse  p-7 md:flex-row-reverse md:items-start">
-            <div className="para p-5 flex flex-col gap-4 items-center sm:items-start">
-              <div className="title text-4xl font-semibold">Our Story</div>
-              <div className="sub-text text-xl max-w-[400px] flex flex-col gap-3">
+          <div className=" about-section2 grid place-items-center ">
+            <div className=" title text-4xl font-semibold p-2 text-center w-full md:my-10">
+              Our Story
+            </div>
+            <div className="md:grid md:grid-cols-2">
+              <div className=" image w-full max-w-[400px] p-4 mt-4">
+                <Image
+                  alt="story image"
+                  width={500}
+                  height={500}
+                  className="w-full"
+                  src={story.src}
+                />
+              </div>
+              <div className="sub-text text-xl max-w-[400px] flex flex-col gap-4 p-4">
                 <p>
                   We began with a simple idea: to create an online marketplace
                   that offers an unparalleled shopping experience. Founded in
@@ -57,15 +69,6 @@ const About = ({ list }) => {
                   world through our business.
                 </p>
               </div>
-            </div>
-            <div className="image w-full h-full  border-2 max-w-[460px] pt-8 flex items-center justify-center">
-              <Image
-                alt="story image"
-                width={500}
-                height={500}
-                className="w-full md:max-w-[350px]"
-                src={story.src}
-              />
             </div>
           </div>
           <div className="about-section3 bg-[#f9f9f9] ">

@@ -48,7 +48,7 @@ const Footer = () => {
     { name: "Returns", url: "#" },
   ];
   return (
-    <div className="sm:h-[300px] mt-8 border-t-[1px] grid bg-[#f9fafb] text-[#6b7280]">
+    <div className="md:h-[300px] mt-8 border-t-[1px] grid bg-[#f9fafb] text-[#6b7280]">
       <div className="footerlinks sm:w-screen h-full p-7  gap-10 grid grid-cols-2 md:grid-cols-4">
           <FooterLinks title="SHOP" arrayofLinks={popularCategories} />
           <FooterLinks title="SOCIAL" arrayofLinks={social} />

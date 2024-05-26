@@ -160,13 +160,13 @@ const StoreItems = () => {
           </div>
         </div>
       </div>
-      <div className="header border-b-2">
-        <div className=" p-4 text-2xl font-semibold  sm:text-3xl sm:p-5 md:text-5xl md:text-left md:p-6">
+      <div className="header border-b-2 p-3">
+        <div className=" py-4 text-2xl font-semibold  sm:text-3xl sm:py-5 md:text-5xl md:text-left md:py-6">
           {pagetitle}
         </div>
-        <div className="breadcrumbs p-2 ">
+        <div className="breadcrumbs py-2 ">
           <Link className="text-blue-600 hover:text-blue-100" href={"/store"}>
-            Categories
+            categories
           </Link>{" "}
           / <Link href={"#"}> {query}</Link>
         </div>

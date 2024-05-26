@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "@/redux/cartSlice";
 import ProductReviews from "./ProductReviews/ProductReviews";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
+import Link from "next/link";
 const myStyles = {
   itemShapes: RoundedStar,
   activeFillColor: "#ffb700",
@@ -119,147 +120,183 @@ const ProductPage = (props) => {
   };
 
   return (
-    <div className="product-page grid mt-7">
-      {productDetails.id ? (
-        <>
-          <div className="product-bg flex flex-col md:flex-row justify-center items-center ">
-            <div className="product-image grid  gap-3 ">
-              <div className="main-img w-screen sm:w-[500px] h-[300px] shadow-md grid">
-                <img
-                  className="object-contain h-full w-full "
-                  alt="main image"
-                  height={400}
-                  width={500}
-                  src={mainImg}
-                />
-              </div>
-              <div className="images-thumbnail-container flex gap-2  min-w-[300px]  h-fit overflow-auto">
-                {images.map((url) => {
-                  return (
-                    <button
-                      key={Math.random()}
-                      className={` w-[100px] h-[100px] border-2 ${
-                        url === mainImg
-                          ? " border-blue-600"
-                          : "border-transparent"
-                      }`}
-                      onClick={() => setMainImg(url)}
-                    >
-                      <img
-                        alt="sub images"
-                        className="w-full h-full object-contain"
-                        key={id + "image"}
-                        src={url}
-                      />
-                    </button>
-                  );
-                })}
+    <>
+      {/* <div className="product-page-header p-4 border-2">
+        <Link className="text-blue-500 hover:text-blue-400" href={"/store"}>
+          categories
+        </Link>{" "}
+        /{" "}
+        <Link
+          className="text-blue-500 hover:text-blue-400"
+          href={`/store/${productDetails.category}`}
+        >
+          {productDetails.category}
+        </Link>{" "}
+        / {productDetails.title}
+      </div> */}
+      <div className="product-page grid">
+        {productDetails.id ? (
+          <>
+            <div className="product-page-header p-4 my-4">
+              <div className="product-page-breadcrumb">
+                <Link
+                  className="text-blue-500 hover:text-blue-400"
+                  href={"/store"}
+                >
+                  categories
+                </Link>{" "}
+                /{" "}
+                <Link
+                  className="text-blue-500 hover:text-blue-400"
+                  href={`/store/${productDetails.category}`}
+                >
+                  {productDetails.category}
+                </Link>{" "}
+                / {productDetails.title}
               </div>
             </div>
-
-            <div className="product-details p-7 flex flex-col h-full gap-9">
-              <div className="product-details-header flex flex-col gap-1">
-                <h1 className="text-5xl">{title}</h1>
-                <p className="text-xs text-gray-500">{brand}</p>
-                <div className="w-[150px]">
-                  <Rating
-                    value={rating}
-                    itemStyles={myStyles}
-                    radius="small"
-                    readOnly
+            <div className="product-bg flex flex-col md:flex-row justify-center items-center ">
+              <div className="product-image grid  gap-3 ">
+                <div className="main-img w-screen sm:w-[500px] h-[300px] shadow-md grid">
+                  <img
+                    className="object-contain h-full w-full "
+                    alt="main image"
+                    height={400}
+                    width={500}
+                    src={mainImg}
                   />
                 </div>
+                <div className="images-thumbnail-container flex gap-2  min-w-[300px]  h-fit overflow-auto">
+                  {images.map((url) => {
+                    return (
+                      <button
+                        key={Math.random()}
+                        className={` w-[100px] h-[100px] border-2 ${
+                          url === mainImg
+                            ? " border-blue-600"
+                            : "border-transparent"
+                        }`}
+                        onClick={() => setMainImg(url)}
+                      >
+                        <img
+                          alt="sub images"
+                          className="w-full h-full object-contain"
+                          key={id + "image"}
+                          src={url}
+                        />
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-              <div className="product-description">
-                <p className="font-semibold">Description:</p>
-                <p>{description}</p>
-              </div>
-              <div className="product-details-footer flex items-center w-full  ">
-                <p className="text-2xl">$ {price}</p>
-                <button
-                  onClick={() => addtocart(1)}
-                  className={`ml-4 p-2 bg-[#0384c6] text-white rounded-md h-[40px] w-[100px] flex justify-center items-center ${
-                    loader ? "opacity-50" : ""
-                  }`}
-                  disabled={loader}
-                >
-                  {loader ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="2em"
-                      height="2em"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle cx={18} cy={12} r={0} fill="white">
-                        <animate
-                          attributeName="r"
-                          begin={0.67}
-                          calcMode="spline"
-                          dur="1.5s"
-                          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
-                          repeatCount="indefinite"
-                          values="0;2;0;0"
-                        ></animate>
-                      </circle>
-                      <circle cx={12} cy={12} r={0} fill="white">
-                        <animate
-                          attributeName="r"
-                          begin={0.33}
-                          calcMode="spline"
-                          dur="1.5s"
-                          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
-                          repeatCount="indefinite"
-                          values="0;2;0;0"
-                        ></animate>
-                      </circle>
-                      <circle cx={6} cy={12} r={0} fill="white">
-                        <animate
-                          attributeName="r"
-                          begin={0}
-                          calcMode="spline"
-                          dur="1.5s"
-                          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
-                          repeatCount="indefinite"
-                          values="0;2;0;0"
-                        ></animate>
-                      </circle>
-                    </svg>
-                  ) : (
-                    "Add to Cart"
-                  )}
-                </button>
+
+              <div className="product-details p-7 flex flex-col h-full gap-9">
+                <div className="product-details-header flex flex-col gap-1">
+                  <h1 className="text-5xl">{title}</h1>
+                  <p className="text-xs text-gray-500">{brand}</p>
+                  <div className="w-[150px]">
+                    <Rating
+                      value={rating}
+                      itemStyles={myStyles}
+                      radius="small"
+                      readOnly
+                    />
+                  </div>
+                </div>
+                <div className="product-description">
+                  <p className="font-semibold">Description:</p>
+                  <p>{description}</p>
+                </div>
+                <div className="product-details-footer flex items-center w-full  ">
+                  <p className="text-2xl">$ {price}</p>
+                  <button
+                    onClick={() => addtocart(1)}
+                    className={`ml-4 p-2 bg-[#0384c6] text-white rounded-md h-[40px] w-[100px] flex justify-center items-center ${
+                      loader ? "opacity-50" : ""
+                    }`}
+                    disabled={loader}
+                  >
+                    {loader ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="2em"
+                        height="2em"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle cx={18} cy={12} r={0} fill="white">
+                          <animate
+                            attributeName="r"
+                            begin={0.67}
+                            calcMode="spline"
+                            dur="1.5s"
+                            keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                            repeatCount="indefinite"
+                            values="0;2;0;0"
+                          ></animate>
+                        </circle>
+                        <circle cx={12} cy={12} r={0} fill="white">
+                          <animate
+                            attributeName="r"
+                            begin={0.33}
+                            calcMode="spline"
+                            dur="1.5s"
+                            keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                            repeatCount="indefinite"
+                            values="0;2;0;0"
+                          ></animate>
+                        </circle>
+                        <circle cx={6} cy={12} r={0} fill="white">
+                          <animate
+                            attributeName="r"
+                            begin={0}
+                            calcMode="spline"
+                            dur="1.5s"
+                            keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                            repeatCount="indefinite"
+                            values="0;2;0;0"
+                          ></animate>
+                        </circle>
+                      </svg>
+                    ) : (
+                      "Add to Cart"
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <ProductReviews reviewsArray={reviews} />
-        </>
-      ) : (
-        <p>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="5em"
-            height="5em"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="black"
-              d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20Z"
-              opacity={0.5}
-            ></path>
-            <path fill="black" d="M20 12h2A10 10 0 0 0 12 2V4A8 8 0 0 1 20 12Z">
-              <animateTransform
-                attributeName="transform"
-                dur="1s"
-                from="0 12 12"
-                repeatCount="indefinite"
-                to="360 12 12"
-                type="rotate"
-              ></animateTransform>
-            </path>
-          </svg>
-        </p>
-      )}
-    </div>
+            <ProductReviews reviewsArray={reviews} />
+          </>
+        ) : (
+          <p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="5em"
+              height="5em"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="black"
+                d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20Z"
+                opacity={0.5}
+              ></path>
+              <path
+                fill="black"
+                d="M20 12h2A10 10 0 0 0 12 2V4A8 8 0 0 1 20 12Z"
+              >
+                <animateTransform
+                  attributeName="transform"
+                  dur="1s"
+                  from="0 12 12"
+                  repeatCount="indefinite"
+                  to="360 12 12"
+                  type="rotate"
+                ></animateTransform>
+              </path>
+            </svg>
+          </p>
+        )}
+      </div>
+    </>
   );
 };
 
