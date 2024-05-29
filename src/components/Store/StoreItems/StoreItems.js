@@ -7,6 +7,8 @@ import Search from "./Search/Search";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+import dollarconverter from "@/dollarconverter";
+
 const StoreItems = () => {
   const router = useRouter();
   const [query, setQuery] = useState();
@@ -36,15 +38,17 @@ const StoreItems = () => {
   }
 
   useEffect(() => {
-    _setProductList(productlist.products || []);
+    _setProductList("products" in productlist ? productlist.products : []);
     setPriceRange("all");
     setOrderBy("--select--");
   }, [productlist]);
 
   useEffect(() => {
-    let arr = [...productlist.products];
+    console.log(orderby, pricerange);
+    let arr = "products" in productlist ? [...productlist.products] : []
     let _orderby = orderby.toLowerCase();
     let _pricerange = pricerange.toLowerCase();
+    console.log(_orderby);
     if (_orderby != "--select--") {
       switch (_orderby) {
         case "ascending":
@@ -71,10 +75,10 @@ const StoreItems = () => {
           break;
         case "price: high to low":
           arr.sort((a, b) => {
-            if (a.price < b.price) {
+            if (dollarconverter(a.price) > dollarconverter(b.price)) {
               return 1;
             }
-            if (a.price > b.price) {
+            if (dollarconverter(a.price) < dollarconverter(b.price)) {
               return -1;
             }
             return 0;
@@ -82,10 +86,10 @@ const StoreItems = () => {
           break;
         case "price: low to high":
           arr.sort((a, b) => {
-            if (a.price > b.price) {
+            if (dollarconverter(a.price) < dollarconverter(b.price)) {
               return 1;
             }
-            if (a.price < b.price) {
+            if (dollarconverter(a.price) > dollarconverter(b.price)) {
               return -1;
             }
             return 0;
@@ -93,27 +97,33 @@ const StoreItems = () => {
           break;
       }
     }
-
+    console.log(arr);
     if (_pricerange != "all") {
       switch (_pricerange) {
-        case "below $500":
+        case "below ₹500":
           arr = arr.filter((item) => {
-            return item.price < 500;
+            return dollarconverter(item.price) < 500;
           });
           break;
-        case "$500 - $1000":
+        case "₹500 - ₹1000":
           arr = arr.filter((item) => {
-            return item.price > 500 && item.price < 1000;
+            return (
+              dollarconverter(item.price) > 500 &&
+              dollarconverter(item.price) < 1000
+            );
           });
           break;
-        case "$1000 - $2000":
+        case "₹1000 - ₹2000":
           arr = arr.filter((item) => {
-            return item.price > 1000 && item.price < 2000;
+            return (
+              dollarconverter(item.price) > 1000 &&
+              dollarconverter(item.price) < 2000
+            );
           });
           break;
-        case "$2000 and more":
+        case "₹2000 and more":
           arr = arr.filter((item) => {
-            return item.price > 2000;
+            return dollarconverter(item.price) > 2000;
           });
           break;
         case "all":
@@ -137,10 +147,10 @@ const StoreItems = () => {
               onChange={handlepricerange}
             >
               <option>All</option>
-              <option>Below $500</option>
-              <option>$500 - $1000</option>
-              <option>$1000 - $2000</option>
-              <option>$2000 and more</option>
+              <option>Below ₹500</option>
+              <option>₹500 - ₹1000</option>
+              <option>₹1000 - ₹2000</option>
+              <option>₹2000 and more</option>
             </select>
           </div>
           <div className="arrange-list relative">

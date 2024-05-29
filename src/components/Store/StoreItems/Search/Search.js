@@ -63,7 +63,7 @@ const Search = () => {
       />
       <label
         htmlFor="search"
-        className={`absolute transition-[font-size,top,left,color]  ${
+        className={`absolute transition-[font-size,top,left,color] hover:cursor-text ${
           focus ? ` left-[10px] top-[-13px] bg-white text-blue-500 ` : `top-[15%] left-[10px] text-lg text-gray-400`
         }`}
       >

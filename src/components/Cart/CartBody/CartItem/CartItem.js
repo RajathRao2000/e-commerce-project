@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { cartActions } from "@/redux/cartSlice";
-let timeouttoken = "";
+import dollarconverter from "@/dollarconverter";
 const CartItem = (props) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
@@ -68,7 +68,7 @@ const CartItem = (props) => {
         </div>
       </div>
       <div className="flex flex-col items-end justify-between mr-2">
-        <p className="">$ {props.price}</p>
+        <p className="">₹ {dollarconverter(props.price)}</p>
         <button onClick={deleteItem} className=" rounded-md p-1 font-semibold text-red-500">
           Remove
         </button>

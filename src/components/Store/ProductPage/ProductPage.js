@@ -6,6 +6,7 @@ import { cartActions } from "@/redux/cartSlice";
 import ProductReviews from "./ProductReviews/ProductReviews";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import Link from "next/link";
+import dollarconverter from "@/dollarconverter";
 const myStyles = {
   itemShapes: RoundedStar,
   activeFillColor: "#ffb700",
@@ -121,19 +122,6 @@ const ProductPage = (props) => {
 
   return (
     <>
-      {/* <div className="product-page-header p-4 border-2">
-        <Link className="text-blue-500 hover:text-blue-400" href={"/store"}>
-          categories
-        </Link>{" "}
-        /{" "}
-        <Link
-          className="text-blue-500 hover:text-blue-400"
-          href={`/store/${productDetails.category}`}
-        >
-          {productDetails.category}
-        </Link>{" "}
-        / {productDetails.title}
-      </div> */}
       <div className="product-page grid">
         {productDetails.id ? (
           <>
@@ -208,7 +196,7 @@ const ProductPage = (props) => {
                   <p>{description}</p>
                 </div>
                 <div className="product-details-footer flex items-center w-full  ">
-                  <p className="text-2xl">$ {price}</p>
+                  <p className="text-2xl">₹ {dollarconverter(price)}</p>
                   <button
                     onClick={() => addtocart(1)}
                     className={`ml-4 p-2 bg-[#0384c6] text-white rounded-md h-[40px] w-[100px] flex justify-center items-center ${

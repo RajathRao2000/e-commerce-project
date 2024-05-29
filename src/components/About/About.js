@@ -1,6 +1,6 @@
 import React from "react";
-import missionimg from "../../images/mission.jpg";
-import story from "../../images/story.jpg";
+import missionimg from "../../assets/images/mission.jpg";
+import story from "../../assets/images/story.jpg";
 import Image from "next/image";
 const About = ({ list }) => {
   return (
@@ -36,7 +36,7 @@ const About = ({ list }) => {
               Our Story
             </div>
             <div className="md:grid md:grid-cols-2">
-              <div className=" image w-full max-w-[400px] p-4 mt-4">
+              <div className=" image w-full max-w-[400px] p-4 mt-4 flex justify-center items-center">
                 <Image
                   alt="story image"
                   width={500}
@@ -90,7 +90,6 @@ const About = ({ list }) => {
                 const { large, medium, thumbnail } = picture;
                 const { city, state, country } = location;
                 const _id = id.value;
-
                 return (
                   <div
                     key={_id}

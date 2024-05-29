@@ -1,10 +1,10 @@
 import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
-// import makeup from "../../images/makeup-transparent.png";
-import makeup from "../../images/makeup-banner.jpg";
-import fragrance from "../../images/fragrances-banner.jpg";
-import furniture from "../../images/furniture-banner.jpg";
+// import makeup from "../../assets/images/makeup-transparent.png";
+import makeup from "../../assets/images/makeup-banner.jpg";
+import fragrance from "../../assets/images/fragrances-banner.jpg";
+import furniture from "../../assets/images/furniture-banner.jpg";
 import Image from "next/image";
 import Search from "@/components/Store/StoreItems/Search/Search";
 const CategoryBanner = ({ category, product_list }) => {
@@ -167,7 +167,7 @@ export async function getStaticProps() {
   try {
     const res = await axios.get("https://dummyjson.com/products/categories");
     resdata_categories = res.data;
-    console.log("getstaticp", "success", resdata);
+    // console.log("getstaticp", "success", resdata);
   } catch (error) {
     // console.log("getstaticprops", error);
   }
