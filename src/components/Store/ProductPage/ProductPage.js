@@ -147,7 +147,7 @@ const ProductPage = (props) => {
               <div className="product-image grid  gap-3 ">
                 <div className="main-img w-screen sm:w-[500px] h-[300px] shadow-md grid">
                   <img
-                    className="object-contain h-full w-full "
+                    className="object-contain h-[inherit] w-full "
                     alt="main image"
                     height={400}
                     width={500}
