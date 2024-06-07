@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
-const uri =
-  `mongodb+srv://${process.env.mongodbuser}:${process.env.mongodbps}@cluster0.z25nbll.mongodb.net/?retryWrites=true&w=majority&appName=cluster0`;
+const uri = process.env.DATABASE_URL;
+// `mongodb+srv://${process.env.mongodbuser}:${process.env.mongodbps}@cluster0.z25nbll.mongodb.net/?retryWrites=true&w=majority&appName=cluster0`;
 
 export default async function handler(req, res) {
   const client = new MongoClient(uri);
@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       const database = client.db("ECommerce");
       const collection = database.collection("cartlist");
       const query = { id: req.body.id };
-      
+
       const exists = await collection.findOne(query);
       let result;
       if (!exists) {
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       // console.log(result, "result");
       res.status(201).json({ message: "success", data: result });
     } catch (error) {
-      // console.log(error);
+      console.log("Error in accessing cart items", error);
     } finally {
       client.close();
     }

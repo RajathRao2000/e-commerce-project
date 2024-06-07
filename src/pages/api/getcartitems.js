@@ -1,6 +1,5 @@
 import { MongoClient } from "mongodb";
-const uri =
-  `mongodb+srv://${process.env.mongodbuser}:${process.env.mongodbps}@cluster0.z25nbll.mongodb.net/?retryWrites=true&w=majority&appName=cluster0`;
+const uri = process.env.DATABASE_URL
 
 export default async function handler(req, res) {
   const client = new MongoClient(uri);
@@ -16,7 +15,7 @@ export default async function handler(req, res) {
       }
       res.status(201).json({ message: "success", data: list });
     } catch (error) {
-      // console.log(error);
+      console.log("Error in adding getting cart item", error);
     } finally {
       client.close();
     }

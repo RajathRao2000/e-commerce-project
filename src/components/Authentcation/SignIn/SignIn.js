@@ -53,7 +53,7 @@ const SignIn = () => {
       passwordip.disabled = true;
       rememberMeip.disabled = true;
     } catch (error) {
-      // console.log(error);
+      console.log("error in sign in:",error);
     }
   };
 

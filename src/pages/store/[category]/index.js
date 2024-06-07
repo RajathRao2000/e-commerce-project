@@ -15,7 +15,7 @@ const Category = () => {
   const [itemList, setItemList] = useState([]);
 
   async function getData() {
-    dispatch(productAction.updateProductList([]))
+    dispatch(productAction.updateProductList([]));
     let url = "";
     if (query !== undefined) {
       if (query === "all") {
@@ -31,7 +31,12 @@ const Category = () => {
         setItemList(res.data);
         dispatch(productAction.updateProductList(res.data));
       } catch (error) {
-        // console.log(error);
+        console.log(
+          "Error in getting list of products from dummyjson.com",
+          error,
+          "url:",
+          url
+        );
       }
     }
   }
@@ -42,8 +47,11 @@ const Category = () => {
   return (
     <>
       <Head>
-        <title>Store: {typeof query==="string"?query:""}</title>
-        <meta property="description" content={`This page lists all the products related to ${query}`} />
+        <title>Store: {typeof query === "string" ? query : ""}</title>
+        <meta
+          property="description"
+          content={`This page lists all the products related to ${query}`}
+        />
       </Head>
       <div className="flex w-screen max-w-6xl">
         <CategoryNav />

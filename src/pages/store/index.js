@@ -12,7 +12,7 @@ const CategoryBanner = ({ category, product_list }) => {
   let bannertitle = "";
   let background = "";
   let image = "";
-  let linkbg=""
+  let linkbg = "";
   switch (category) {
     case "beauty":
       _category = "Beauty";
@@ -20,7 +20,7 @@ const CategoryBanner = ({ category, product_list }) => {
       background =
         "sm:bg-gradient-to-b from-[#d7c2c4] via-[#ddcdce] to-[#e3d1d2]";
       image = makeup.src;
-      linkbg="bg-[#c9c7c5]"
+      linkbg = "bg-[#c9c7c5]";
       break;
     case "fragrances":
       _category = "Fragrances";
@@ -162,14 +162,14 @@ export async function getStaticProps() {
     resdata_products = res.data;
     // console.log("getstaticp", "success",resdata);
   } catch (error) {
-    // console.log("getstaticprops", error);
+    console.log("Error in getting products from dummyjson.com", error);
   }
   try {
     const res = await axios.get("https://dummyjson.com/products/categories");
     resdata_categories = res.data;
     // console.log("getstaticp", "success", resdata);
   } catch (error) {
-    // console.log("getstaticprops", error);
+    console.log("Error in getting products from dummyjson.com", error);
   }
 
   return {

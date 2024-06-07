@@ -81,7 +81,7 @@ const ProductPage = (props) => {
         setMainImg(res.data.images[0]);
       }
     } catch (error) {
-      // console.log(error);
+      console.log("error in getting product info", error);
     }
   };
   useEffect(() => {
