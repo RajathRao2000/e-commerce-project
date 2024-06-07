@@ -53,18 +53,24 @@ const Search = () => {
       <input
         name="search"
         id="search"
-        className={`p-2 border-2 outline-none border-black focus:border-blue-500  w-full`}
+        className={`p-2 border-2 outline-none ${
+          search ? "border-blue-500" : "border-black"
+        } focus:border-blue-500  w-full`}
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);
         }}
-        onFocus={()=>setFocus(true)}
-        onBlur={()=>setFocus(false)}
+        onFocus={() => setFocus(true)}
+        onBlur={(e) => {
+          e.target.value ? "" : setFocus(false);
+        }}
       />
       <label
         htmlFor="search"
         className={`absolute transition-[font-size,top,left,color] hover:cursor-text ${
-          focus ? ` left-[10px] top-[-13px] bg-white text-blue-500 ` : `top-[15%] left-[10px] text-lg text-gray-400`
+          focus
+            ? ` left-[10px] top-[-13px] bg-white text-blue-500 `
+            : `top-[15%] left-[10px] text-lg text-gray-400`
         }`}
       >
         Search Product
@@ -84,7 +90,10 @@ const Search = () => {
         className={`absolute p-2 right-2 text-gray-400 hover:text-gray-700 active:tect-black ${
           search ? "" : "hidden"
         }`}
-        onClick={clearSearch}
+        onClick={() => {
+          setFocus(false);
+          clearSearch();
+        }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
