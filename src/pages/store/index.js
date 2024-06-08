@@ -1,12 +1,13 @@
 import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
-// import makeup from "../../assets/images/makeup-transparent.png";
-import makeup from "../../assets/images/makeup-banner.jpg";
-import fragrance from "../../assets/images/fragrances-banner.jpg";
-import furniture from "../../assets/images/furniture-banner.jpg";
 import Image from "next/image";
 import Search from "@/components/Store/StoreItems/Search/Search";
+
+import makeup from "../../../public/assets/images/store_makeup.jpg";
+import fragrance from "../../../public/assets/images/store_fragrances.jpg";
+import furniture from "../../../public/assets/images/store_furniture.jpg";
+
 const CategoryBanner = ({ category, product_list }) => {
   let _category = "";
   let bannertitle = "";
@@ -19,20 +20,20 @@ const CategoryBanner = ({ category, product_list }) => {
       bannertitle = "Essential Beauty Picks";
       background =
         "sm:bg-gradient-to-b from-[#d7c2c4] via-[#ddcdce] to-[#e3d1d2]";
-      image = makeup.src;
+      image = makeup;
       linkbg = "bg-[#c9c7c5]";
       break;
     case "fragrances":
       _category = "Fragrances";
       bannertitle = "Discover Your Signature Scent";
-      image = fragrance.src;
+      image = fragrance;
       background =
         "sm:bg-gradient-to-b from-[#c9c7c5] via-[#d7d9d9] to-[#e6ecf1]";
       break;
     case "furniture":
       _category = "Furniture";
       bannertitle = "Transform Your Space";
-      image = furniture.src;
+      image = furniture;
       background =
         "sm:bg-gradient-to-b from-[#cfd6d8] via-[#c0c1ba] to-[#876d5a]";
       break;
@@ -49,6 +50,7 @@ const CategoryBanner = ({ category, product_list }) => {
             height={500}
             src={image}
             alt={_category}
+            placeholder="blur"
           />
         </div>
         <div
@@ -83,7 +85,6 @@ const CategoryBanner = ({ category, product_list }) => {
                   <p className="p-2 text-lg font-semibold text-center sm:text-sm sm:font-medium">
                     {product.title}
                   </p>
-                  {/* <p className="p-2">{(product.title).slice(0,20)}{product.title.length>20?"...":""}</p> */}
                 </Link>
               );
             }

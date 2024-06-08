@@ -1,7 +1,8 @@
-import React from "react";
-import missionimg from "../../assets/images/mission.jpg";
-import story from "../../assets/images/story.jpg";
 import Image from "next/image";
+
+import mission from "../../../public/assets/images/about_mission.jpg"
+import story from "../../../public/assets/images/about_story.jpg"
+
 const About = ({ list }) => {
   return (
     <>
@@ -19,7 +20,8 @@ const About = ({ list }) => {
                   width={500}
                   height={500}
                   className="w-full"
-                  src={missionimg.src}
+                  src={mission}
+                  placeholder="blur"
                 />
               </div>
               <div className="sub-text text-2xl max-w-[400px] flex flex-col justify-center gap-4 p-4">
@@ -42,7 +44,8 @@ const About = ({ list }) => {
                   width={500}
                   height={500}
                   className="w-full"
-                  src={story.src}
+                  src={story}
+                  placeholder="blur"
                 />
               </div>
               <div className="sub-text text-xl max-w-[400px] flex flex-col gap-4 p-4">

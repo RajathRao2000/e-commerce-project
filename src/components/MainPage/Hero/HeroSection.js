@@ -1,6 +1,9 @@
 import React from "react";
-import heroimg from "../../../assets/images/bg-store.jpg";
 import { useRouter } from "next/router";
+
+import hero from "../../../../public/assets/images/hero_bg.jpg";
+
+console.log(hero)
 
 const HeroSection = () => {
   const router = useRouter();
@@ -10,7 +13,7 @@ const HeroSection = () => {
   return (
     <div className="hero-container relative h-[50vh] min-h-[660px] ">
       <div
-        style={{ backgroundImage: `url(${heroimg.src})` }}
+        style={{ backgroundImage: `url(${hero.src})` }}
         className={`w-screen bg-cover bg-no-repeat h-full min-h-[400px] relative ${before}`}
       >
         <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white">

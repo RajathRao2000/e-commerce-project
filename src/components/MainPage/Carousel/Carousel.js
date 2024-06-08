@@ -1,12 +1,10 @@
 import React from "react";
-import herogreen from "../../../assets/images/hero-green-product-edited-transp.png";
-import heroblue from "../../../assets/images/hero-blue-product.jpg";
-import herolaptop from "../../../assets/images/hero-laptop.jpg";
 import { useReducer } from "react";
 import Image from "next/image";
+import blue from "../../../../public/assets/images/carousel_blue_product.jpg"
+import green from "../../../../public/assets/images/carousel_green_product.png"
 const BLUE = "BLUE";
 const GREEN = "GREEN";
-
 
 const Carousel = () => {
   const initial = {
@@ -15,9 +13,9 @@ const Carousel = () => {
   };
   const reducer = (state, action) => {
     switch (action.type) {
-      case "BLUE":
+      case BLUE:
         return { blue: true, green: false };
-      case "GREEN":
+      case GREEN:
         return { blue: false, green: true };
     }
   };
@@ -54,8 +52,9 @@ const Carousel = () => {
                     className="w-full"
                     width={500}
                     height={500}
-                    src={heroblue.src}
+                    src={blue}
                     alt="blue-cosmetics"
+                    placeholder="blur"
                   />
                 </div>
               </div>
@@ -85,8 +84,9 @@ const Carousel = () => {
                     className="w-full"
                     width={500}
                     height={500}
-                    src={herogreen.src}
+                    src={green}
                     alt="green-cosmetics"
+                    placeholder="blur"
                   />
                 </div>
               </div>
