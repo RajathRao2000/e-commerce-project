@@ -21,7 +21,9 @@ const section2 = {
 const Banner = ({ title, subtext, image, route }) => {
   const router = useRouter();
   return (
-    <div className="sm:min-h-[500px] relative p-5 flex flex-col-reverse sm:flex-row-reverse  sm:items-center md:p-20">
+    <div
+      className={`sm:min-h-[500px] relative p-5 flex flex-col-reverse sm:flex-row-reverse sm:items-center md:p-20`}
+    >
       <div className="para flex flex-col justify-center p-7 absolute text-white top-0 z-50 h-full sm:static sm:text-black sm:max-w-[400px] lg:max-w-[500px]  ">
         <div className="title sm:text-4xl text-6xl font-bold">{title}</div>
         <div className="sub-text sm:text-lg text-xl">{subtext}</div>

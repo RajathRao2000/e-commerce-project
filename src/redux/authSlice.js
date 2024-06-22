@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import  secureLocalStorage  from  "react-secure-storage";
+import secureLocalStorage from "react-secure-storage";
 let structure = {
   idtoken: "",
   email: "",
@@ -9,7 +9,8 @@ let structure = {
 };
 
 try {
-  if(secureLocalStorage.getItem("token")) structure = JSON.parse(secureLocalStorage.getItem("token"));
+  if (secureLocalStorage.getItem("token"))
+    structure = JSON.parse(secureLocalStorage.getItem("token"));
   // if(localStorage.getItem("token")) structure = JSON.parse(localStorage.getItem("token"));
   // console.log(document.cookie)
 } catch (error) {}
@@ -19,7 +20,7 @@ const authSlice = createSlice({
   initialState: { userData: structure },
   reducers: {
     saveUserData(state, action) {
-      secureLocalStorage.removeItem("token")
+      secureLocalStorage.removeItem("token");
       const { idToken, email, profilepic, username, rememberMe } =
         action.payload;
       state.userData = {
@@ -33,7 +34,7 @@ const authSlice = createSlice({
       // console.log(rememberMe);
       state.isAuth = true;
       if (rememberMe) {
-        console.log(rememberMe)
+        // console.log(rememberMe)
         secureLocalStorage.setItem("token", JSON.stringify(state.userData));
         // localStorage.setItem("token", JSON.stringify(state.userData));
       }
@@ -41,7 +42,7 @@ const authSlice = createSlice({
     logoutUser(state) {
       state.userData = "";
       state.isAuth = false;
-      secureLocalStorage.removeItem("token")
+      secureLocalStorage.removeItem("token");
     },
   },
 });

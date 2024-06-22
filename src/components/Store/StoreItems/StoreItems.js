@@ -44,11 +44,9 @@ const StoreItems = () => {
   }, [productlist]);
 
   useEffect(() => {
-    console.log(orderby, pricerange);
-    let arr = "products" in productlist ? [...productlist.products] : []
+    let arr = "products" in productlist ? [...productlist.products] : [];
     let _orderby = orderby.toLowerCase();
     let _pricerange = pricerange.toLowerCase();
-    console.log(_orderby);
     if (_orderby != "--select--") {
       switch (_orderby) {
         case "ascending":
@@ -75,10 +73,10 @@ const StoreItems = () => {
           break;
         case "price: high to low":
           arr.sort((a, b) => {
-            if (dollarconverter(a.price) > dollarconverter(b.price)) {
+            if (dollarconverter(a.price) < dollarconverter(b.price)) {
               return 1;
             }
-            if (dollarconverter(a.price) < dollarconverter(b.price)) {
+            if (dollarconverter(a.price) > dollarconverter(b.price)) {
               return -1;
             }
             return 0;
@@ -86,10 +84,10 @@ const StoreItems = () => {
           break;
         case "price: low to high":
           arr.sort((a, b) => {
-            if (dollarconverter(a.price) < dollarconverter(b.price)) {
+            if (dollarconverter(a.price) > dollarconverter(b.price)) {
               return 1;
             }
-            if (dollarconverter(a.price) > dollarconverter(b.price)) {
+            if (dollarconverter(a.price) < dollarconverter(b.price)) {
               return -1;
             }
             return 0;
@@ -97,11 +95,16 @@ const StoreItems = () => {
           break;
       }
     }
-    console.log(arr);
+
     if (_pricerange != "all") {
       switch (_pricerange) {
         case "below ₹500":
           arr = arr.filter((item) => {
+            console.log(
+              item.price,
+              dollarconverter(item.price),
+              dollarconverter(item.price) < 500
+            );
             return dollarconverter(item.price) < 500;
           });
           break;

@@ -36,7 +36,7 @@ const Search = () => {
 
   const clearSearch = () => {
     setSearch("");
-    setSearchResults([]);
+    setTimeout(()=>setSearchResults([]),500);
   };
 
   useEffect(() => {
@@ -82,9 +82,9 @@ const Search = () => {
             : " scale-0"
         } transition-transform origin-top-left overflow-auto  rounded-md bg-white absolute shadow-lg results z-10 `}
       >
-        {searchResults.map((item) => {
+        {searchResults?searchResults.map((item) => {
           return <SearchItem key={item.id} {...item} />;
-        })}
+        }):<p>No Search Results found.</p>}
       </div>
       <button
         className={`absolute p-2 right-2 text-gray-400 hover:text-gray-700 active:tect-black ${
