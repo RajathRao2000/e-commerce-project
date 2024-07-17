@@ -15,13 +15,14 @@ export const SearchItem = ({
   category,
   id,
   price,
+  images,
 }) => {
   return (
     <Link href={`/store/${category}/${id}`}>
       <div className="item-bg flex gap-3 p-2 border-b-[1px]">
         <div
-          style={{ backgroundImage: `url(${thumbnail})` }}
-          className="w-[80px] h-[100px] bg-cover bg-center bg-no-repeat rounded"
+          style={{ backgroundImage: `url(${images[0]})` }}
+          className="w-[80px] h-[100px] bg-contain bg-center bg-no-repeat rounded"
         ></div>
         <div>
           <p>{title}</p>

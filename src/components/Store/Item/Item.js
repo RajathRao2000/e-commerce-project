@@ -39,8 +39,8 @@ const Item = (props) => {
       <Link href={`/store/${category}/${id}`}>
         <div>
           <img
-            className="w-[300px] h-[320px] object-start object-cover"
-            src={thumbnail}
+            className="w-[300px] h-[320px]  object-contain"
+            src={images[0]}
           />
         </div>
       </Link>

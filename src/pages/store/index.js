@@ -74,10 +74,10 @@ const CategoryBanner = ({ category, product_list }) => {
                 <Link
                   key={Math.random()}
                   href={`/store/${category}/${product.id}`}
-                  className={` p-5 hover:brightness-50 hover:scale-105 transition-transform sm:p-0`}
+                  className={` p-5 hover:brightness-50 hover:scale-105 transition-transform sm:p-0 h-[232.89px]`}
                 >
                   <img
-                    className=" "
+                    className="h-full object-contain"
                     width={300}
                     height={300}
                     src={product.thumbnail}
