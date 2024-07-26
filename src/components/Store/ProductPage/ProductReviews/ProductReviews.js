@@ -53,7 +53,7 @@ const ProductReviews = ({ reviewsArray }) => {
           }) => {
             return (
               <Review
-                key={Math.random()}
+                key={reviewerName + rating}
                 rating={rating}
                 title={comment}
                 review={review}

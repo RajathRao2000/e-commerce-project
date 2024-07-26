@@ -72,7 +72,7 @@ const CategoryNav = () => {
           temp[0] = temp[0].toUpperCase();
           let capitalize = temp.join("");
           return (
-            <div key={Math.random()} className="link-container p-1 flex  ">
+            <div key={category} className="link-container p-1 flex  ">
               <Link
                 className={`p-1 pl-5 w-full rounded-lg hover:bg-gray-200 ${
                   router.query.category === category ? activeNav : ""

@@ -8,7 +8,7 @@ const FooterLinks = ({ title, arrayofLinks }) => {
       <ul className="flex flex-col gap-2">
         {arrayofLinks.map((item) => {
           return (
-            <li key={Math.random()}>
+            <li key={item.id}>
               <Link className="" href={`${item.url}`}>
                 {item.name}
               </Link>
@@ -22,38 +22,38 @@ const FooterLinks = ({ title, arrayofLinks }) => {
 
 const Footer = () => {
   const popularCategories = [
-    { name: "Smartphones", url: "#" },
-    { name: "Home Decor", url: "#" },
-    { name: "Laptops", url: "#" },
+    { id: 1, name: "Smartphones", url: "#" },
+    { id: 2, name: "Home Decor", url: "#" },
+    { id: 3, name: "Laptops", url: "#" },
   ];
 
   const social = [
-    { name: "Facebook", url: "#" },
-    { name: "Instagram", url: "#" },
-    { name: "Linkedin", url: "#" },
-    { name: "Discord", url: "#" },
+    { id: 1, name: "Facebook", url: "#" },
+    { id: 2, name: "Instagram", url: "#" },
+    { id: 3, name: "Linkedin", url: "#" },
+    { id: 4, name: "Discord", url: "#" },
   ];
 
   const company = [
-    { name: "About", url: "#" },
-    { name: "Contact Us", url: "#" },
-    { name: "Blog", url: "#" },
-    { name: "Press", url: "#" },
+    { id: 1, name: "About", url: "#" },
+    { id: 2, name: "Contact Us", url: "#" },
+    { id: 3, name: "Blog", url: "#" },
+    { id: 4, name: "Press", url: "#" },
   ];
 
   const support = [
-    { name: "Help", url: "#" },
-    { name: "Track Order", url: "#" },
-    { name: "Shipping", url: "#" },
-    { name: "Returns", url: "#" },
+    { id: 1, name: "Help", url: "#" },
+    { id: 2, name: "Track Order", url: "#" },
+    { id: 3, name: "Shipping", url: "#" },
+    { id: 4, name: "Returns", url: "#" },
   ];
   return (
     <div className="md:h-[300px] mt-8 border-t-[1px] grid bg-[#f9fafb] text-[#6b7280]">
       <div className="footerlinks sm:w-screen h-full p-7  gap-10 grid grid-cols-2 md:grid-cols-4">
-          <FooterLinks title="SHOP" arrayofLinks={popularCategories} />
-          <FooterLinks title="SOCIAL" arrayofLinks={social} />
-          <FooterLinks title="COMPANY" arrayofLinks={company} />
-          <FooterLinks title="SUPPORT" arrayofLinks={support} />
+        <FooterLinks title="SHOP" arrayofLinks={popularCategories} />
+        <FooterLinks title="SOCIAL" arrayofLinks={social} />
+        <FooterLinks title="COMPANY" arrayofLinks={company} />
+        <FooterLinks title="SUPPORT" arrayofLinks={support} />
       </div>
       <div className=" sm:w-screen border-t-[1px] p-2 text-sm flex justify-center items-center flex-col">
         <div className="links w-full flex items-center justify-center gap-5">

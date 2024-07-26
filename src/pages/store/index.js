@@ -72,7 +72,7 @@ const CategoryBanner = ({ category, product_list }) => {
             if (index < 3) {
               return (
                 <Link
-                  key={Math.random()}
+                  key={product.id}
                   href={`/store/${category}/${product.id}`}
                   className={` p-5 hover:brightness-50 hover:scale-105 transition-transform sm:p-0 h-[232.89px]`}
                 >
@@ -125,7 +125,7 @@ const ProductList = ({ categoriesArr, productsObj }) => {
             let temp = obj[category];
             return (
               <CategoryBanner
-                key={Math.random()}
+                key={category}
                 category={category}
                 product_list={temp}
               />
@@ -138,7 +138,7 @@ const ProductList = ({ categoriesArr, productsObj }) => {
             {categoriesArr.map((value) => {
               return (
                 <Link
-                  key={Math.random()}
+                  key={value.name}
                   className="text-center rounded-md p-3 border-2 border-black font-bold hover:scale-110 duration-75 transition-[transform,color,background] hover:bg-black hover:text-white"
                   href={`/store/${value.slug}`}
                 >

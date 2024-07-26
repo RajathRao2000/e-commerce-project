@@ -158,7 +158,7 @@ const ProductPage = (props) => {
                   {images.map((url) => {
                     return (
                       <button
-                        key={Math.random()}
+                        key={url}
                         className={` w-[100px] h-[100px] border-2 ${
                           url === mainImg
                             ? " border-blue-600"
