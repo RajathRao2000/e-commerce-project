@@ -35,9 +35,9 @@ const SignUp = () => {
     const email = emailip.value;
     const password = passwordip.value;
     const confirmPassword = confirmPasswordip.value;
-    emailip.disabled = true;
-    passwordip.disabled = true;
-    confirmPasswordip.disabled = true;
+    // emailip.disabled = true;
+    // passwordip.disabled = true;
+    // confirmPasswordip.disabled = true;
 
     if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
       setEmailError({ error: true, message: "Invalid Email" });
@@ -58,20 +58,21 @@ const SignUp = () => {
       return;
     }
     if (isValid && password === confirmPassword) {
-      const res= await axios.post("/api/signup",{
-        email,password
-      })
+      const res = await axios.post("/api/signup", {
+        email,
+        password,
+      });
       // console.log(res.data)
       emailip.value = "";
       passwordip.value = "";
       confirmPasswordip.value = "";
       const { message, data } = res.data;
-      const rememberMe=false
+      const rememberMe = false;
       signUpHandler({ message, data, rememberMe });
     }
-    emailip.disabled = false;
-    passwordip.disabled = false;
-    confirmPasswordip.disabled = false;
+    // emailip.disabled = false;
+    // passwordip.disabled = false;
+    // confirmPasswordip.disabled = false;
   };
 
   return (

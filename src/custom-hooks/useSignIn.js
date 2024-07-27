@@ -6,7 +6,6 @@ import { authActions } from "@/redux/authSlice";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
-
 function toastMsg(status, message, settings) {
   //todo: capitalize the error
   toast[status](

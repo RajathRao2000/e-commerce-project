@@ -27,9 +27,9 @@ const SignIn = () => {
     const email = emailip.value;
     const password = passwordip.value;
     const rememberMe = rememberMeip.checked;
-    emailip.disabled = true;
-    passwordip.disabled = true;
-    rememberMeip.disabled = true;
+    // emailip.disabled = true;
+    // passwordip.disabled = true;
+    // rememberMeip.disabled = true;
     if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
       setEmailError({ error: true, message: "Invalid Email" });
       return;
@@ -49,11 +49,12 @@ const SignIn = () => {
       });
       const { message, data } = res.data;
       signInHandler({ message, data, rememberMe });
-      emailip.disabled = true;
-      passwordip.disabled = true;
-      rememberMeip.disabled = true;
     } catch (error) {
-      console.log("error in sign in:",error);
+      console.log("error in sign in:", error);
+    } finally {
+      // emailip.disabled = false;
+      // passwordip.disabled = false;
+      // rememberMeip.disabled = false;
     }
   };
 
