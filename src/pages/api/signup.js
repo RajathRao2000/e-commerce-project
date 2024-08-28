@@ -1,4 +1,4 @@
-import keys from "@/keys";
+import keys from "@/utils/keys";
 import axios from "axios";
 const APIKEY = process.env.GOOGLE_API_KEY;
 const SIGNUP_URL = `${keys.SignUpUrl}${APIKEY}`;

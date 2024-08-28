@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import dollarconverter from "@/dollarconverter";
+import dollarconverter from "@/utils/dollarconverter";
 const makePayment = async (amount) => {
   const res = await initializeRazorpay();
   if (!res) {

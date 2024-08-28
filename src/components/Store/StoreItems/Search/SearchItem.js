@@ -1,6 +1,6 @@
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import Link from "next/link";
-import dollarconverter from "@/dollarconverter";
+import dollarconverter from "@/utils/dollarconverter";
 
 const myStyles = {
   itemShapes: RoundedStar,

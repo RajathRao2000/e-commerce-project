@@ -3,8 +3,6 @@ import { useRouter } from "next/router";
 
 import hero from "../../../../public/assets/images/hero_bg.jpg";
 
-console.log(hero)
-
 const HeroSection = () => {
   const router = useRouter();
   const before =

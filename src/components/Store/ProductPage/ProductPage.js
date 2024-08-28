@@ -6,7 +6,8 @@ import { cartActions } from "@/redux/cartSlice";
 import ProductReviews from "./ProductReviews/ProductReviews";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import Link from "next/link";
-import dollarconverter from "@/dollarconverter";
+import dollarconverter from "@/utils/dollarconverter";
+import Image from "next/image";
 const myStyles = {
   itemShapes: RoundedStar,
   activeFillColor: "#ffb700",
@@ -146,7 +147,7 @@ const ProductPage = (props) => {
             <div className="product-bg flex flex-col md:flex-row justify-center items-center ">
               <div className="product-image grid  gap-3 ">
                 <div className="main-img w-screen sm:w-[500px] h-[300px] shadow-md grid">
-                  <img
+                  <Image
                     className="object-contain h-[inherit] w-full "
                     alt="main image"
                     height={400}
@@ -166,11 +167,13 @@ const ProductPage = (props) => {
                         }`}
                         onClick={() => setMainImg(url)}
                       >
-                        <img
+                        <Image
                           alt="sub images"
                           className="w-full h-full object-contain"
                           key={id + "image"}
                           src={url}
+                          width={100}
+                          height={100}
                         />
                       </button>
                     );

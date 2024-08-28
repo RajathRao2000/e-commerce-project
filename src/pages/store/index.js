@@ -50,7 +50,6 @@ const CategoryBanner = ({ category, product_list }) => {
             height={500}
             src={image}
             alt={_category}
-            placeholder="blur"
           />
         </div>
         <div
@@ -76,11 +75,12 @@ const CategoryBanner = ({ category, product_list }) => {
                   href={`/store/${category}/${product.id}`}
                   className={` p-5 hover:brightness-50 hover:scale-105 transition-transform sm:p-0 h-[232.89px]`}
                 >
-                  <img
+                  <Image
                     className="h-full object-contain"
                     width={300}
                     height={300}
                     src={product.thumbnail}
+                    alt={product}
                   />
                   <p className="p-2 text-lg font-semibold text-center sm:text-sm sm:font-medium">
                     {product.title}

@@ -1,9 +1,5 @@
-import { MongoClient } from "mongodb";
-const uri = process.env.DATABASE_URL;
-// `mongodb+srv://${process.env.mongodbuser}:${process.env.mongodbps}@cluster0.z25nbll.mongodb.net/?retryWrites=true&w=majority&appName=cluster0`;
-
+import client from "@/utils/mongoDB";
 export default async function handler(req, res) {
-  const client = new MongoClient(uri);
   if (req.method === "POST") {
     try {
       const database = client.db("ECommerce");

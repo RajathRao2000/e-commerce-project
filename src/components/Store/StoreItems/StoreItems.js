@@ -7,7 +7,7 @@ import Search from "./Search/Search";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import dollarconverter from "@/dollarconverter";
+import dollarconverter from "@/utils/dollarconverter";
 
 const StoreItems = () => {
   const router = useRouter();

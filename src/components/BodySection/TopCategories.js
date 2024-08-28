@@ -15,6 +15,7 @@ const CategoryCard = ({ title, url, imageurl }) => {
         <Image
           className="w-[300px] h-[300px] object-center rounded-xl object-cover"
           src={imageurl}
+          alt={title}
         />
         <p className="font-bold absolute bottom-3 right-[50%] translate-x-[50%] text-white bg-black/80 p-1 px-5 rounded-full w-max">
           {title}

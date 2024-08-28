@@ -7,7 +7,8 @@ import { cartActions } from "@/redux/cartSlice";
 import Star from "@/components/UI/Star/Star";
 import { useRouter } from "next/router";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
-import dollarconverter from "@/dollarconverter";
+import dollarconverter from "@/utils/dollarconverter";
+import Image from "next/image";
 const myStyles = {
   itemShapes: RoundedStar,
   activeFillColor: "#ffb700",
@@ -38,9 +39,12 @@ const Item = (props) => {
     >
       <Link href={`/store/${category}/${id}`}>
         <div>
-          <img
+          <Image
             className="w-[300px] h-[320px]  object-contain"
             src={images[0]}
+            height={300}
+            width={300}
+            alt={title}
           />
         </div>
       </Link>

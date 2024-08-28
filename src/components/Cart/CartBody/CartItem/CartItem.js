@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { cartActions } from "@/redux/cartSlice";
-import dollarconverter from "@/dollarconverter";
+import dollarconverter from "@/utils/dollarconverter";
 const CartItem = (props) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
@@ -22,13 +22,13 @@ const CartItem = (props) => {
     setInput(e.target.value.replace(/[^0-9]*/g, ""));
   };
 
-  const deleteItem =async ()=>{
-    const res=await axios.post(`/api/deletecartitem`,{
-      id: props.id
-    })
+  const deleteItem = async () => {
+    const res = await axios.post(`/api/deletecartitem`, {
+      id: props.id,
+    });
     // console.log(res)
-    dispatch(cartActions.RemoveFromCart(props.id))
-  }
+    dispatch(cartActions.RemoveFromCart(props.id));
+  };
 
   useEffect(() => {
     setInput(props.quantity);
@@ -69,7 +69,10 @@ const CartItem = (props) => {
       </div>
       <div className="flex flex-col items-end justify-between mr-2">
         <p className="">₹ {dollarconverter(props.price)}</p>
-        <button onClick={deleteItem} className=" rounded-md p-1 font-semibold text-red-500">
+        <button
+          onClick={deleteItem}
+          className=" rounded-md p-1 font-semibold text-red-500"
+        >
           Remove
         </button>
       </div>

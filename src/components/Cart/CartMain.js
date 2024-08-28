@@ -25,9 +25,11 @@ const CartList = () => {
         }}
       >
         <div
-          className={` bg-white h-full flex flex-col ${
-            showCart ? "w-screen sm:w-[450px]" : "w-0"
-          } duration-200 transition-[width] ease-in-out fixed right-0`}
+          className={` bg-white h-full flex flex-col overflow-hidden ${
+            showCart
+              ? "w-screen sm:w-[450px] "
+              : "overflow-hidden opacity-0 translate-x-[100%]"
+          } duration-200 transition-[opacity,transform] origin-right ease-in-out fixed right-0`}
         >
           <CartHeader />
           <CartBody />

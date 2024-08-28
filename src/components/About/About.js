@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import mission from "../../../public/assets/images/about_mission.jpg"
-import story from "../../../public/assets/images/about_story.jpg"
+import mission from "../../../public/assets/images/about_mission.jpg";
+import story from "../../../public/assets/images/about_story.jpg";
 
 const About = ({ list }) => {
   return (
@@ -25,11 +25,13 @@ const About = ({ list }) => {
                 />
               </div>
               <div className="sub-text text-2xl max-w-[400px] flex flex-col justify-center gap-4 p-4">
-              <p>We revolutionize the online shopping experience by providing our
-                customers with a diverse selection of high-quality products at
-                unbeatable prices. At the heart of our mission is a passion for
-                connecting people with the products they love, making every
-                shopping moment delightful and fulfilling.</p>
+                <p>
+                  We revolutionize the online shopping experience by providing
+                  our customers with a diverse selection of high-quality
+                  products at unbeatable prices. At the heart of our mission is
+                  a passion for connecting people with the products they love,
+                  making every shopping moment delightful and fulfilling.
+                </p>
               </div>
             </div>
           </div>
@@ -98,7 +100,7 @@ const About = ({ list }) => {
                     key={_id}
                     className="person w-full h-full flex flex-col  sm:m-4 sm:p-4"
                   >
-                    <img
+                    <Image
                       width={300}
                       height={300}
                       alt={"employee image"}
